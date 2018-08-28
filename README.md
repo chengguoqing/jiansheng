@@ -3,7 +3,7 @@
 > 独行工匠 515235416
 
 ## Build Setup
-![Alt text](./fm/apo.PNG)
+![Alt text](./fm/apo.png)
 
 ``` bash
 # install dependencies
