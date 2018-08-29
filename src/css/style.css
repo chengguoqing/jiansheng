@@ -1,3 +1,6 @@
+body{
+    padding-bottom: 80px;
+}
 .lunbo_dsd{
     height: 210px;
     overflow: hidden;
@@ -507,7 +510,7 @@ height: 60px;
 }
 
 .mui-bar-nav ~ .mui-content{
-        padding-top: 60px;
+        padding-top: 59px;
 }
 
 .df_jh_hggd_er{
@@ -862,8 +865,17 @@ display: inline-block;
 }
 
 
+.mui-bar{
+    z-index: 10000
+}
 
 
-
-
-
+.van-tab--active{
+        color: #259fdf;
+}
+.van-tabs__line{
+        background-color: #259fdf;
+}
+.van-popup{
+     background-color: rgba(0,0,0,.6);
+}

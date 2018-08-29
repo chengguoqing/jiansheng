@@ -47,7 +47,7 @@
 								培训
 							</p>
 						</section>
-						<section class="sd_jh_cer" @tap="zhu('application_form')">
+						<section class="sd_jh_cer" @tap="hf('application_form')">
 							<p>
 								<i class="f_i dsfer_jh_der"></i>
 							</p>

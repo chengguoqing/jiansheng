@@ -1,14 +1,15 @@
 <template>
 	 <section   v-waterfall-lower="loadMore"
   waterfall-disabled="disabled"
-  waterfall-offset="400">
+  waterfall-offset="0">
    
 
 
-                <section class="pd pt10" v-for="sf in sd" @tap="zhu('hdxq')">
-                    <img  v-lazy="sf.activityImg"  class="w100 kx df_jh_deertds">
+                <section class="pd pt10" v-for="sf in sd"  @tap="hf('huodongxiangqing?id_e='+sf.id)">
+                    <img  v-lazy="sf.activityImg"  class="w100 kx df_jh_deertds" >
                     <p class="pt10 pm5 fz16 z3">
                         {{sf.activityName}}
+                       
                     </p>
                     <p class="fz12">
                         <i class="f_i time_df_drrt"></i>
@@ -45,19 +46,28 @@
         },
         methods: {
             loadMore() {
-                this.disabled = true;
-                let th = this
-                this.getdata(function() {
-                    th.page++
-                        th.disabled = false;
-                })
+
+
+                if (!this.disabled) {
+                    this.disabled = true;
+                    let th = this
+                    th.getdata(function() {
+                        th.disabled = false
+                        th.page++
+
+                    })
+                }
+
             },
             getdata(call_b) {
                 var params = {},
                     th = this
                 params.pageNo = this.page
                 params.pageSize = 10
+                 
+
                 this.post('serviceActivity', 'getActivityList', params, function(data) {
+                    
                     var data_sd = data.info.page.list
                     try {
                         call_der(data_sd)

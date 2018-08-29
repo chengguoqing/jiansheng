@@ -35,12 +35,13 @@
       <index_qb v-if="idx_ff==0"></index_qb>
     <huodong_list v-else></huodong_list>
  
-
+<dibu :active="1"></dibu>
 		</section>
 </template>
 <script>
     import index_qb from "../components/index_qb"
     import huodong_list from "../components/huodong_list"
+    import dibu from "../components/dibu"
     export default {
         data() {
             return {
@@ -62,7 +63,8 @@
         },
         components: {
             index_qb,
-            huodong_list
+            huodong_list,
+            dibu
         },
         methods: {
             s_jhh_sdd: function(sd) {

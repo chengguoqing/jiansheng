@@ -1,9 +1,9 @@
 <!--下拉-->
 <template>
 	<div class="pr">
-        <p class="jgh_deert" v-if="show_er" @click="$emit('close')"></p>
+<!--        <p class="jgh_deert" v-if="show_er" @click="$emit('close')"></p>-->
         
-	   <van-popup v-model="show_er" position="bottom" :overlay="false">
+	   <van-popup v-model="$store.state.is_select" position="bottom" >
 
 
              <van-picker
@@ -11,7 +11,7 @@
   :title="title_e"
   :columns="columns"
   value-key="name"
-@cancel="$emit('close')"
+@cancel="$store.state.is_select=false"
 @confirm="wancdrttx"
 
 />
@@ -38,6 +38,7 @@
         },
         methods: {
             wancdrttx(e) {
+                this.$store.state.is_select=false
                 this.$emit('get_data',e)
             }
         },

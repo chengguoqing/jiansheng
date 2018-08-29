@@ -1,62 +1,38 @@
 <template>
-	<div >
-	<van-tabbar v-model="active">
-  <van-tabbar-item :to="'/'">
-            <section>
-       <p class="cen df_jh_deer_ert">
-            <span class="sd_jh_dert">
-                    8
-            </span>
+    <nav class="mui-bar mui-bar-tab df_jh_deert" id="seek_apper">
+        <a class="mui-tab-item " :class="active==1?'mui-active':''" @tap="hf('')">
+            <p>
+               <i class="f_i dsf_jh_dsf"></i>
+            </p>
+            <span class="mui-tab-label">主页</span>
+        </a>
 
-        </p>
+        <a class="mui-tab-item "  :class="active==2?'mui-active':''" @tap="hf('huodong')">
+           <p>
+               <i class="f_i dsf_jh_dsf ab"></i>
+            </p>
 
+            <span class="mui-tab-label">活动</span>
 
-    <span>游戏大厅</span>
-    </section>
-  </van-tabbar-item>
+        </a>
+         <a class="mui-tab-item " :class="active==3?'mui-active':''">
+           <p>
+               <i class="f_i dsf_jh_dsf ac"></i>
+            </p>
 
-  <van-tabbar-item  :to="'kaijiang'">
-      <section >
-       <p class="cen df_jh_deer_ert"  >
-            <span class="sd_jh_dert">
-                    <i class="dx icon-xingxing fz14"></i>
-            </span>
-        </p>
-    <span>开奖中心</span>
-          </section>
-  </van-tabbar-item>
+            <span class="mui-tab-label">消息</span>
 
+        </a>
+          <a class="mui-tab-item "  :class="active==4?'mui-active':''">
+            <p>
+               <i class="f_i dsf_jh_dsf ad"></i> 
+            </p>
 
-          <van-tabbar-item :to="'touzhu'">
-               <section>
-       <p class="cen df_jh_deer_ert">
-            <span class="sd_jh_dert">
-                    <i class="dx icon-group47 fz12 cz"></i>
-            </span>
-        </p>
-    <span>投注查询</span>
-    </section>
-  </van-tabbar-item>
+            <span class="mui-tab-label">我的</span>
 
-
-          <van-tabbar-item :to="'user_center'">
-               <section @tap="hf('')">
-       <p class="cen df_jh_deer_ert">
-            <span class="sd_jh_dert">
-                    <i class="dx icon-weibiaoti-_huabanfuben fz14"></i>
-            </span>
-        </p>
-    <span>我的账号</span>
-    </section>
-  </van-tabbar-item>
-
-
-
-
-</van-tabbar>
-
-
-	</div>
+        </a>
+       
+    </nav>
 </template>
 <script>
     export default {
@@ -66,10 +42,7 @@
         data() {
             return {
 
-                icon: {
-                    normal: '//img.yzcdn.cn/icon-normal.png',
-                    active: '//img.yzcdn.cn/icon-active.png'
-                }
+               
             }
         },
         components: {
@@ -85,31 +58,10 @@
 
 </script>
 <style>
-    .van-tabbar-item.van-tabbar-item--active .sd_jh_dert {
-        background: #FB3233;
-    }
-
-    .van-tabbar-item--active {
-        color: #FB3233;
-    }
+   
 
 </style>
 <style scoped>
-    .df_jh_deer_ert {
-        position: relative;
-        bottom: 3px;
-        margin-bottom: 1px;
-    }
-
-    .sd_jh_dert {
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-        color: #fff;
-        transform: scale(0.9);
-        display: inline-block;
-        background: #A9A9A9;
-        border-radius: 50%;
-    }
+   
 
 </style>

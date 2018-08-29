@@ -22,7 +22,6 @@ exports.decryptByDES=function(data) {
         mode: CryptoJS.mode.ECB,
         padding: CryptoJS.pad.Pkcs7
     });
- console.log(data);
     return decrypted.toString(CryptoJS.enc.Utf8);
 }
 

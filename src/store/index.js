@@ -4,11 +4,12 @@ Vue.use(vuex);
 
 export default new vuex.Store({
     state: {
-        show: false
+        is_select: false,//显示隐藏下拉选择
+        load_in:false
     },
     mutations: {
         increment(state) {
-            state.show="515235416"
+           
         }
     }
 })
