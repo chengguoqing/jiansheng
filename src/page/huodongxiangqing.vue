@@ -6,7 +6,7 @@
 
     </header>
         
-    <div class="mui-content " v-if="!$store.state.load_in">
+    <div class="mui-content ">
      
             <img :src="sd.activityImg" class="w100 kx">
         <section class="bgff">
@@ -60,7 +60,7 @@
                 <p class="pd pt10 pm10 fz16 z3">
             行程安排
                     </p>
-            <section class="fz15  btm pt10 pm10 z6 dsf_khj_deert" v-html="sd.activityTrip">
+            <section class="fz15  btm pt10 pm10 z6 dsf_khj_deert pd" v-html="sd.activityTrip">
 
 
             </section>
@@ -84,10 +84,10 @@
     </div>
         
         
-        </section>
+        </section> 
 </template>
 <script>
-    
+    import cg_ge from "../cg_ge.js"
     export default {
         data() {
             return {
@@ -95,7 +95,7 @@
             }
         },
         components: {
-            
+
         },
         methods: {
 
@@ -104,11 +104,25 @@
             let sd_ddr = {},
                 th = this
             sd_ddr.id = this.$route.query.id_e
-            this.$store.state.load_in=true
-            this.post('serviceActivity', 'getActivityDetail', sd_ddr, function(data) {
-                th.$store.state.load_in=false
-                th.sd = data.info.jshbActivityDetails
-                console.log(th.sd);
+
+            var sd_df_a = 'serviceActivity',
+                sd_df_b = "getActivityDetail"
+            if (this.$route.query.type == 1) {
+                sd_df_a = 'serviceEvent',
+                    sd_df_b = "getEventDetail"
+            }
+
+            this.post(sd_df_a, sd_df_b, sd_ddr, function(data) {
+
+
+                if (th.$route.query.type == 1) {
+                    th.sd = cg_ge.xxiangq_w(data.info.jshbEventDetails)
+                    console.log(data.info.jshbEventDetails);
+                } else {
+                    th.sd = cg_ge.xxiangq_w(data.info.jshbActivityDetails)
+                }
+
+
 
             })
 

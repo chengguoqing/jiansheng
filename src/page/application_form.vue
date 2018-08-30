@@ -7,9 +7,9 @@
         <h1 class="mui-title z3">课程报名</h1>
 
     </header>
-
+ 
         
-            <div class="mui-content df_cfrf_rrrt" v-if="!$store.state.load_in">
+            <div class="mui-content df_cfrf_rrrt" >
               <van-tabs @tap="sd_xert" >
                    <section class="mui-row cen pt10 pm10 bbm  bgff df_deeertyx">
             <section class="mui-col-xs-4 fz15  " :class="is_remen?'ls':'z3'" @tap="ss_sd(1)">
@@ -69,7 +69,7 @@
         data() {
             return {
                 spja: "商品价格",
-                pin_d:"好评评分",
+                pin_d: "好评评分",
                 show_er: true, //显示价格排序下拉
                 sd_cdr: [], //切换的数据
                 pageNo: 1,
@@ -79,7 +79,7 @@
                 isRecommend: "",
                 orderBy: "", //1 评分降序 2 评分升序   3 价格降序 4 价格升序 5 距离降序 6  距离升序
                 is_remen: false, //是否为热门推荐
-                in_der:"",//是否点击了好评 和价格  2好评 3价格
+                in_der: "", //是否点击了好评 和价格  2好评 3价格
                 columns_e: [{ //价格
                         name: "价格降序",
                         id: 3
@@ -145,20 +145,20 @@
                 this.get_sdf(da_er.name, function(data) {
                     da_er.date_w = []
                     data.map(a => {
-                        a.get_hu=5-a.evaluate
+                        a.get_hu = 5 - a.evaluate
                         da_er.date_w.push(a)
                     })
                 })
             },
             get_data(data) {
                 this.orderBy = data.id
-           
-                if(this.in_der==2){
-                     this.pin_d=data.name
-                }else if(this.in_der==3){
-                     this.spja = data.name
+
+                if (this.in_der == 2) {
+                    this.pin_d = data.name
+                } else if (this.in_der == 3) {
+                    this.spja = data.name
                 }
-               
+
                 this.get_dated(this.sd_cdr[this.xz_idx])
 
             }
@@ -166,10 +166,10 @@
         mounted() {
             var params = {},
                 th = this
-            params.city = ""
-            this.$store.state.load_in=true
+            params.city = this.$store.state.venueCity
+
             this.post('serviceCourse', 'getCourseProject', params, function(data) {
-                th.$store.state.load_in=false
+
                 data.info.projectList.map(a => {
                     let sd_der = {}
                     sd_der.name = a
@@ -199,7 +199,7 @@
 </style>
 <style scoped>
     .df_deeertyx {
-         position: fixed !important;
+        position: fixed !important;
         top: 102px;
         width: 100%;
     }

@@ -15,9 +15,11 @@ export default {
 
         Vue.prototype.post = function (sdsd_a, sdsd_b, cn, xy) {
             cn = JSON.stringify(cn)
-            var url_dre = jiami.getRequest(sdsd_a, sdsd_b, cn)
+            var url_dre = jiami.getRequest(sdsd_a, sdsd_b, cn),
+                th=this
+            this.$store.state.load_in = true
             this.$http.post(url_dre).then((res) => {
-
+                th.$store.state.load_in = false
                 var str = res.bodyText.toString().replace(/[\r\n]/g, '');
                 var result = jiami.decryptByDES(str);
                 

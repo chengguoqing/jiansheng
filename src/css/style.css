@@ -519,7 +519,7 @@ height: 60px;
     top: 0px;
     width: 100%;
     height: 100%;
-/*    background: url('../img/df_deert.jpg');*/
+    background: url('../assets/img/df_deert.jpg');
     background-size:100% auto
 }
 
@@ -878,4 +878,10 @@ display: inline-block;
 }
 .van-popup{
      background-color: rgba(0,0,0,.6);
+}
+.dfg_rrert{
+    height: 15rem;
+}
+.mui-content img{
+    max-width: 100%
 }
