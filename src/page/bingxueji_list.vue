@@ -6,7 +6,7 @@
   waterfall-offset="0">
 
     <ul class="pr  dsf_ddftyyd" id="seek_apper" >
-        <li class="bbm pt10 pm10 pd" v-for="sd in data_list" @click="">
+        <li class="bbm pt10 pm10 pd" v-for="sd in data_list" @tap="hf('changguan_detail?id='+sd.id)">
             <img :src="sd.venueImg" class="fl ferng_s ab">
             <section class="ov pl10 ">
                 <p class="dianer z3 dian">
@@ -49,7 +49,7 @@
                     pageNo: "1",
                     pageSize: "10"
                 },
-                data_list: [], //数据列表 
+                data_list: [], //数据列表
                 disabled: false //是否禁止滚动 true禁止
             }
         },
@@ -75,7 +75,7 @@
             get_data(call_back) {
                 let th = this
                 this.post('serviceVenue', 'getVenueList', this.qingqiu, function(data) {
-                
+
                     data.info.page.list.map(a => {
                         a.evaluate = parseInt(a.evaluate)
                         a.kh_de = 5 - a.evaluate
