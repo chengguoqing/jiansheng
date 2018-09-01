@@ -82,7 +82,7 @@
 
 			<section class="pd fz14 z6 pt5 pm5">
 				推荐场馆
-				<span class="fr">全部></span>
+				<span class="fr" @click="hf('yuechangguan_list')">全部></span>
 			</section>
 
 			<section class="pd bgff pt10 pm10 mb5" v-for="sd in sd" @tap="hf('changguan_detail?id='+sd.id)">
