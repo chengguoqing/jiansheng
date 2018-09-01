@@ -11,6 +11,8 @@ import piaowu_list from '@/page/piaowu_list'
 import yuejiaolian_list from '@/page/yuejiaolian_list'
 import peixun_list from '@/page/peixun_list'
 import jiaolian_detail from '@/page/jiaolian_detail'
+import yuedongyou from '@/page/yuedongyou'
+import fabuyaoyue from '@/page/fabuyaoyue'
 Vue.use(Router)
 
 export default new Router({
@@ -62,6 +64,14 @@ export default new Router({
             path: '/jiaolian_detail',
             name: 'jiaolian_detail',
             component: jiaolian_detail
+    }, {
+            path: '/yuedongyou',
+            name: 'yuedongyou',
+            component: yuedongyou
+    }, {
+            path: '/fabuyaoyue',
+            name: 'fabuyaoyue',
+            component: fabuyaoyue
     }
   ]
 })

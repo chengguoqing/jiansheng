@@ -12,7 +12,7 @@
 								约场馆
 							</p>
 						</section>
-						<section class="sd_jh_cer" @tap="hf('yuejiaolian_list')">
+						<section class="sd_jh_cer" @click="hf('yuejiaolian_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ab"></i>
 							</p>
@@ -21,7 +21,7 @@
 							</p>
 						</section>
 
-						<section class="sd_jh_cer">
+						<section class="sd_jh_cer" @tap="hf('yuedongyou')">
 							<p>
 								<i class="f_i dsfer_jh_der ac"></i>
 							</p>

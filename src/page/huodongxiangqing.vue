@@ -16,7 +16,7 @@
                <p class="mui-col-xs-3 fz12 z3 tr">已报名{{sd.signNum}}人</p>
             <p class="qc"></p>
         </section>
-        <section class="btm pt10 pm10 pd dian">
+        <section class="btm pt10 pm10 pd dian" @click="$store.state.is_map=true">
             <span class="d_jh_deet cz">
                 <i class="f_i map_icosder"></i>
             </span>
@@ -83,10 +83,11 @@
         
     </div>
         
-        
+         <map_tiaozhuang :venueAddr="sd.venueAddr" :latitude="sd.latitude" :longitude="sd.longitude"></map_tiaozhuang>
         </section> 
 </template>
 <script>
+    import map_tiaozhuang from "../components/map_tiaozhuang"
     import cg_ge from "../cg_ge.js"
     export default {
         data() {
@@ -95,10 +96,10 @@
             }
         },
         components: {
-
+map_tiaozhuang
         },
         methods: {
-
+ 
         },
         mounted() {
             let sd_ddr = {},
@@ -113,8 +114,6 @@
             }
 
             this.post(sd_df_a, sd_df_b, sd_ddr, function(data) {
-
-
                 if (th.$route.query.type == 1) {
                     th.sd = cg_ge.xxiangq_w(data.info.jshbEventDetails)
                     console.log(data.info.jshbEventDetails);

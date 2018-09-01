@@ -3,8 +3,8 @@
 	   <header class="mui-bar mui-bar-nav asd_uy_dftx">
      <van-icon name="arrow-left"  class="mui-pull-left z3 mt15" @tap="$router.back(-1)"/>
         <h1 class="mui-title z3">{{sd.venueName}}</h1>
-  <a class="mui-action-back  mui-pull-right">
-        <i class="f_i mao_icosst"></i>
+  <a class="  mui-pull-right">
+        <i class="f_i mao_icosst" @click="$store.state.is_map=true"></i>
         </a>
     </header>
         
@@ -214,22 +214,31 @@
         
     </div>
     
+       
+        
+                                                           
+                <map_tiaozhuang :venueAddr="sd.venueAddr" :latitude="sd.latitude" :longitude="sd.longitude"></map_tiaozhuang>
+        
+                                 
+        
         
         
 
 	</div>
 </template>
 <script>
+    import map_tiaozhuang from "../components/map_tiaozhuang"
     export default {
         data() {
             return {
+                show_er:true,
                 jshbPrieduserList: "",
                 jshbVenueImgList: "",
                 sd: ""
             }
         },
         components: {
-
+map_tiaozhuang
         },
         methods: {
 

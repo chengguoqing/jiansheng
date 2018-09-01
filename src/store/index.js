@@ -5,6 +5,7 @@ Vue.use(vuex);
 export default new vuex.Store({
     state: {
         is_select: false, //显示隐藏下拉选择
+        is_map:false,//是否显示地图
         load_in: false,
         venueCity: "石家庄", //城市
         latitude: "38.048684",

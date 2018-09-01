@@ -16,7 +16,7 @@
 					</section>
 				</section>
 			</header>
-			<section class="lunbo_dsd pr mui-content">
+			<section class="lunbo_dsd pr mui-content index">
                     <van-swipe :autoplay="3000" class="h100">
                         <van-swipe-item v-for="sd in jshbTrainHomeImgInfList" class="h100">
                             <img :src="sd.img" class="w100 h100">
@@ -89,6 +89,11 @@
     }
 
 </script>
+<style>
+    .lunbo_dsd.index .van-swipe__indicators{
+    bottom: 40px;
+    }
+</style>
 <style scoped>
 
 
