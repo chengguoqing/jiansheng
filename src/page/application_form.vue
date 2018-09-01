@@ -10,7 +10,7 @@
  
         
             <div class="mui-content df_cfrf_rrrt" >
-              <van-tabs @click="sd_xert" >
+              <van-tabs @tap="sd_xert" >
                    <section class="mui-row cen pt10 pm10 bbm  bgff df_deeertyx">
             <section class="mui-col-xs-4 fz15  " :class="is_remen?'ls':'z3'" @tap="ss_sd(1)">
             热门推荐

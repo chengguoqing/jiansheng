@@ -18,8 +18,8 @@
 			</header>
 			<section class="lunbo_dsd pr mui-content">
                     <van-swipe :autoplay="3000" class="h100">
-                        <van-swipe-item v-for="sd in 5" class="h100">
-                            <img src="../assets/img/banner.jpg" class="w100 h100">
+                        <van-swipe-item v-for="sd in jshbTrainHomeImgInfList" class="h100">
+                            <img :src="sd.img" class="w100 h100">
                         </van-swipe-item>
                     </van-swipe>
 				<section class="pd sdf_jh_dert mui-scroll">
@@ -46,7 +46,7 @@
         data() {
             return {
                 is_der: true,
-                idx_ff:0,
+                idx_ff: 0,
                 hu_dsdf: [{
                     name: "全部",
                     cls: "mui-active",
@@ -58,7 +58,8 @@
                     id: 1,
                     pageLink: "huodong_list.html"
 
-                }]
+                }],
+                jshbTrainHomeImgInfList: [], //轮播图
             }
         },
         components: {
@@ -68,17 +69,20 @@
         },
         methods: {
             s_jhh_sdd: function(sd) {
-
                 this.hu_dsdf.map(function(a) {
                     a.cls = ""
                 })
-                this.idx_ff=sd.id
+                this.idx_ff = sd.id
                 sd.cls = "act"
             }
 
         },
         mounted: function() {
-
+            let th=this
+            this.post('serviceTrain', 'getHomeInf', {}, function(data) {
+                th.jshbTrainHomeImgInfList=data.info.jshbTrainHomeImgInfList
+              
+            })
 
 
         }

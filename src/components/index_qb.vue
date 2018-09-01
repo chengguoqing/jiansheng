@@ -12,7 +12,7 @@
 								约场馆
 							</p>
 						</section>
-						<section class="sd_jh_cer" @click="zhu('coaching')">
+						<section class="sd_jh_cer" @tap="hf('yuejiaolian_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ab"></i>
 							</p>
@@ -39,7 +39,7 @@
 							</p>
 						</section>
 
-						<section class="sd_jh_cer" @click="zhu('online_registration')">
+						<section class="sd_jh_cer" @click="hf('peixun_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ae"></i>
 							</p>
@@ -55,7 +55,7 @@
 								课程
 							</p>
 						</section>
-						<section class="sd_jh_cer" @tap="zhu('ticket_service')">
+						<section class="sd_jh_cer" @tap="hf('piaowu_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ab" @click="zhu('ticket_service')"></i>
 							</p>

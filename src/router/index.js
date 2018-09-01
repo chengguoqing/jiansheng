@@ -7,6 +7,10 @@ import huodongxiangqing from '@/page/huodongxiangqing'
 import changguan_detail from '@/page/changguan_detail'
 import yuechangguan_list from '@/page/yuechangguan_list'
 import bingxueji_list from '@/page/bingxueji_list'
+import piaowu_list from '@/page/piaowu_list'
+import yuejiaolian_list from '@/page/yuejiaolian_list'
+import peixun_list from '@/page/peixun_list'
+import jiaolian_detail from '@/page/jiaolian_detail'
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +46,22 @@ export default new Router({
             path: '/bingxueji_list',
             name: 'bingxueji_list',
             component: bingxueji_list
+    }, {
+            path: '/piaowu_list',
+            name: 'piaowu_list',
+            component: piaowu_list
+    }, {
+            path: '/yuejiaolian_list',
+            name: 'yuejiaolian_list',
+            component: yuejiaolian_list
+    }, {
+            path: '/peixun_list',
+            name: 'peixun_list',
+            component: peixun_list
+    }, {
+            path: '/jiaolian_detail',
+            name: 'jiaolian_detail',
+            component: jiaolian_detail
     }
   ]
 })
