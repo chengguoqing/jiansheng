@@ -1,7 +1,7 @@
 <template>
 	<div >
 	   <header class="mui-bar mui-bar-nav asd_uy_dftx">
-     <van-icon name="arrow-left"  class="mui-pull-left z3 mt15" @tap="$router.back(-1)"/>
+     <van-icon name="arrow-left"  class="mui-pull-left z3 mt15  mui-action-back" />
         <h1 class="mui-title z3">{{sd.venueName}}</h1>
   <a class="  mui-pull-right">
         <i class="f_i mao_icosst" @click="$store.state.is_map=true"></i>
@@ -249,6 +249,7 @@ map_tiaozhuang
             params.id = this.$route.query.id
             window.scrollTo(0, 0);
             this.post('serviceVenue', 'getVenueDetail', params, function(data) {
+            
                 console.log(data);
                 th.sd = data.info.jshbVenue
                 th.jshbPrieduserList = data.info.jshbPrieduserList

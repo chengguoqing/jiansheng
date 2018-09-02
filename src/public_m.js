@@ -16,13 +16,13 @@ export default {
         Vue.prototype.post = function (sdsd_a, sdsd_b, cn, xy) {
             cn = JSON.stringify(cn)
             var url_dre = jiami.getRequest(sdsd_a, sdsd_b, cn),
-                th=this
+                th = this
             this.$store.state.load_in = true
             this.$http.post(url_dre).then((res) => {
                 th.$store.state.load_in = false
                 var str = res.bodyText.toString().replace(/[\r\n]/g, '');
                 var result = jiami.decryptByDES(str);
-                
+
                 var resultList = JSON.parse(result);
 
                 xy(resultList)
@@ -70,11 +70,30 @@ export default {
         }
 
         Vue.prototype.hf = function (url, cu) { //路由跳转
-            console.log(url)
             router.push({
                 path: "/" + url,
                 query: cu
             })
+        }
+        Vue.prototype.hf_right = function (url,canshu, cu) { //路由跳转
+            let url_e = "index.html?/#/" + url
+            if(!canshu){
+                canshu=""
+            }
+            if (mui.os.ios) {
+                mui.openWindow({
+                    url: url_e + canshu,
+                    id: url_e,
+                    show: {
+                        aniShow: "slide-in-right",
+                        duration: 200 //持续时间
+                    }
+                });
+            } else {
+                router.push({
+                    path: "/" + url+canshu
+                })
+            }
         }
 
 

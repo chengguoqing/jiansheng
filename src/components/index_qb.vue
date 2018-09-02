@@ -4,7 +4,7 @@
 				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted sdf_erjh_dert">
 					<div class="mui-scroll ">
 
-						<section class="sd_jh_cer" @click="hf('yuechangguan_list')">
+						<section class="sd_jh_cer" @click="hf_right('yuechangguan_list')"  >
 							<p>
 								<i class="f_i dsfer_jh_der"></i>
 							</p>
@@ -12,7 +12,7 @@
 								约场馆
 							</p>
 						</section>
-						<section class="sd_jh_cer" @click="hf('yuejiaolian_list')">
+						<section class="sd_jh_cer" @click="hf_right('yuejiaolian_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ab"></i>
 							</p>
@@ -21,7 +21,7 @@
 							</p>
 						</section>
 
-						<section class="sd_jh_cer" @tap="hf('yuedongyou')">
+						<section class="sd_jh_cer" @tap="hf_right('yuedongyou')">
 							<p>
 								<i class="f_i dsfer_jh_der ac"></i>
 							</p>
@@ -30,7 +30,7 @@
 							</p>
 						</section>
 
-						<section class="sd_jh_cer" @click="hf('huodong?type=1')">
+						<section class="sd_jh_cer" @click="hf_right('huodong?type=1')">
 							<p>
 								<i class="f_i dsfer_jh_der ad"></i>
 							</p>
@@ -39,7 +39,7 @@
 							</p>
 						</section>
 
-						<section class="sd_jh_cer" @click="hf('peixun_list')">
+						<section class="sd_jh_cer" @click="hf_right('peixun_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ae"></i>
 							</p>
@@ -47,7 +47,7 @@
 								培训
 							</p>
 						</section>
-						<section class="sd_jh_cer" @tap="hf('application_form')">
+						<section class="sd_jh_cer" @tap="hf_right('application_form')">
 							<p>
 								<i class="f_i dsfer_jh_der"></i>
 							</p>
@@ -55,7 +55,7 @@
 								课程
 							</p>
 						</section>
-						<section class="sd_jh_cer" @tap="hf('piaowu_list')">
+						<section class="sd_jh_cer" @tap="hf_right('piaowu_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ab" @click="zhu('ticket_service')"></i>
 							</p>
@@ -76,16 +76,17 @@
 						<p class="qc"></p>
 
 					</div>
-				</div>
+				</div> 
 
 			</section>
-
+           
+			
 			<section class="pd fz14 z6 pt5 pm5">
 				推荐场馆
 				<span class="fr" @click="hf('yuechangguan_list')">全部></span>
 			</section>
-
-			<section class="pd bgff pt10 pm10 mb5" v-for="sd in sd" @tap="hf('changguan_detail?id='+sd.id)">
+<!--  hf('changguan_detail?id='+sd.id)-->
+			<section class="pd bgff pt10 pm10 mb5" v-for="sd in sd" @tap="hf_right('changguan_detail','?id='+sd.id)" >
 			
                   <section class="df_jh_deertds" :style="{'background-image': 'url('+sd.venueImg+') '}">
     </section>
@@ -104,7 +105,10 @@
     export default {
         data() {
             return {
-                sd: ""
+                sd: "",
+                dsf_deert: "",
+                sd_cerr_ere:[],
+                sd_dff_dre:""
             }
         },
         components: {
@@ -112,15 +116,31 @@
         },
         methods: {
 
+        
+            op_iud(id) {
+               
+                 this.hf('changguan_detail?id='+id)
+                return
+                let url_e = "index.html?/#/changguan_detail?id=" 
+                mui.openWindow({
+                    url: url_e+ id,
+                    id: url_e,
+                    show: {
+                         autoShow:false,
+                        aniShow: "slide-in-right",
+                        duration: 200 //持续时间
+                    }
+                });
+            }
         },
         mounted() {
 
             let sd_ddr = {},
                 th = this
             sd_ddr.venueCity = this.$store.state.venueCity
-             
+
             this.post('serviceVenue', 'getHomePage', sd_ddr, function(data) {
-                 
+
                 th.sd = data.info.jshbVenueList
                 console.log(th.sd);
 
@@ -136,12 +156,12 @@
 
 </script>
 <style scoped>
-
-    .df_jh_deertds{
-        height:10.5rem;
-    background-size: 100% auto;
+    .df_jh_deertds {
+        height: 10.5rem;
+        background-size: 100% auto;
         background-repeat: no-repeat;
         background-color: #fff;
-           background-position: center center;
+        background-position: center center;
     }
+
 </style>

@@ -2,7 +2,7 @@
 <template>
 	<div >
 		 <header class="mui-bar mui-bar-nav asd_uy_dftx">
-     <van-icon name="arrow-left"  class="mui-pull-left z3 mt15" @tap="$router.back(-1)"/>
+     <van-icon name="arrow-left"  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">发布邀约</h1>
   <a class="mui-action-back  mui-pull-right">
      

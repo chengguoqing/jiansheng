@@ -1,7 +1,7 @@
 <template>
 	<div >
 	<header class="mui-bar mui-bar-nav asd_uy_dftx">
-        <van-icon name="arrow-left"  class="mui-pull-left z3 mt15" @tap="$router.back(-1)"/>
+        <van-icon name="arrow-left"  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">票务</h1>
 
     </header>
@@ -123,6 +123,9 @@
                 })
             }
 
+        },
+            destroyed: function () {
+            this.disabled = true;
         },
         mounted() {
             let getShowHome={},

@@ -130,6 +130,16 @@ body{
     border: 1px solid #e0e0e0;
     color: #666;
 }
+.dfer_jh_der.act{
+    background: #fff !important
+}
+.dfer_jh_der.act .cf{
+   color: #333 !important
+}
+.dfer_jh_der.act .sdf_jh_deet {
+    border: 1px solid #e0e0e0;
+    color: #666;
+}
 
 .kx{
     vertical-align: bottom
@@ -885,4 +895,19 @@ display: inline-block;
 }
 .mui-content img{
     max-width: 100%
+}
+
+.mui-pull-left.van-icon-arrow-left{
+    padding: 10px !important;
+    left: -10px;
+    margin-top: 5px  !important;
+}
+.df_jh_deertty{
+    padding-top: 137px;
+}
+.df_jh_deertty.ab{
+    padding-top: 59px;
+}
+.df_jh_erdert{
+    padding-bottom: 80px;
 }

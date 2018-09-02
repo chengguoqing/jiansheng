@@ -13,6 +13,7 @@ import peixun_list from '@/page/peixun_list'
 import jiaolian_detail from '@/page/jiaolian_detail'
 import yuedongyou from '@/page/yuedongyou'
 import fabuyaoyue from '@/page/fabuyaoyue'
+import search from '@/page/search'
 Vue.use(Router)
 
 export default new Router({
@@ -20,10 +21,7 @@ export default new Router({
         {
             path: '/',
             name: 'index',
-            component: index,
-            meta: {
-                keepAlive: true // 需要被缓存
-            }
+            component: index
     }, {
             path: '/application_form',
             name: 'application_form',
@@ -72,6 +70,10 @@ export default new Router({
             path: '/fabuyaoyue',
             name: 'fabuyaoyue',
             component: fabuyaoyue
+    }, {
+            path: '/search',
+            name: 'search',
+            component: search
     }
   ]
 })

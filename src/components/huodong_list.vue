@@ -5,7 +5,7 @@
    
 
 
-                <section class="pd pt10" v-for="sf in sd"  @tap="hf('huodongxiangqing?id_e='+sf.id+'&type='+$route.query.type)">
+                <section class="pd pt10" v-for="sf in sd"  @tap="disabled=true;hf_right('huodongxiangqing','?id_e='+sf.id+'&type='+$route.query.type)">
 <!--                    <img  v-lazy="sf.activityImg"  class="w100 kx df_jh_deertds" >-->
                     <section class="df_jh_deertds" :style="{'background-image': 'url('+sf.activityImg+') '}">
     
@@ -69,8 +69,8 @@
                 var sd_der_a = "serviceActivity",
                     sd_der_b = "getActivityList"
                 if (this.$route.query.type == 1) {
-                    sd_der_a="serviceEvent"
-                    sd_der_b="getEventList"
+                    sd_der_a = "serviceEvent"
+                    sd_der_b = "getEventList"
                 }
                 this.post(sd_der_a, sd_der_b, params, function(data) {
 
@@ -81,27 +81,30 @@
                     } catch (e) {
 
                     }
-                    data_sd.map(function(a) {//格式在 cg_ge.js里
-                    
-                       th.sd.push(cg_ge.libiao(a))
+                    data_sd.map(function(a) { //格式在 cg_ge.js里
+
+                        th.sd.push(cg_ge.libiao(a))
                     })
                     call_b()
                 })
             }
         },
+        destroyed: function () {
+            this.disabled = true;
+        },
         mounted() {
-
+           
         },
     }
 
 </script>
 <style scoped>
-    .df_jh_deertds{
-        height:10.5rem;
-    background-size: 100% auto;
+    .df_jh_deertds {
+        height: 10.5rem;
+        background-size: 100% auto;
         background-repeat: no-repeat;
         background-color: #fff;
-           background-position: center center;
+        background-position: center center;
     }
 
 </style>

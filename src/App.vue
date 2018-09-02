@@ -1,11 +1,8 @@
 <template>
   <div id="app">
 
-      
-      <keep-alive >     <!--使用keep-alive会将页面缓存-->
-        <router-view  v-if="$route.meta.keepAlive" ></router-view>
-   </keep-alive> 
-    <router-view v-if="!$route.meta.keepAlive"></router-view>
+  
+    <router-view ></router-view>
       
       
       <load_in ></load_in>
@@ -18,6 +15,9 @@
         name: 'App',
         components: {
             load_in
+        },
+        mounted() {
+         
         }
     }
 
