@@ -20,18 +20,18 @@
                <i class="f_i dsf_jh_dsf ac"></i>
             </p>
 
-            <span class="mui-tab-label">消息</span>
+            <span class="mui-tab-label">订单</span>
 
         </a>
           <a class="mui-tab-item "  :class="active==4?'mui-active':''">
             <p>
-               <i class="f_i dsf_jh_dsf ad"></i> 
+               <i class="f_i dsf_jh_dsf ad"></i>
             </p>
 
             <span class="mui-tab-label">我的</span>
 
         </a>
-       
+
     </nav>
 </template>
 <script>
@@ -42,7 +42,7 @@
         data() {
             return {
 
-               
+
             }
         },
         components: {
@@ -58,10 +58,10 @@
 
 </script>
 <style>
-   
+
 
 </style>
 <style scoped>
-   
+
 
 </style>
