@@ -2,7 +2,7 @@
 	<div >
 	
  <header class="mui-bar mui-bar-nav asd_uy_dftx">
-         <van-icon name="arrow-left"  class="mui-pull-left z3 mt15" @tap="$router.back(-1)"/>
+         <van-icon name="arrow-left"  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">约教练</h1>
 
     </header>
@@ -16,7 +16,7 @@
                     {{sd.name}}
                 </section>
 
-
+ 
 
             </div>
             <span class="sd_jh_ddfrg"><i class="f_i add_icon_er"></i></span>
@@ -27,6 +27,8 @@
     
         </section>
         
+          <div class="  mui-scroll-wrapper df_jh_deertty ab" ref="mui_scroll">
+	<div class="mui-scroll">
         <ul v-waterfall-lower="loadMore"
   waterfall-disabled="disabled"
   waterfall-offset="0">
@@ -46,6 +48,10 @@
         
         
     </div>
+    </div>
+        
+        
+    </div>
 	</div>
 </template>
 <script>
@@ -58,21 +64,21 @@
                     showType: "", //
                     orderBy: "",
                     city: this.$store.state.venueCity, //
-                    tuijian:1,
-                    grantProject:"",
-                    searchInfo:""
-                    
+                    tuijian: 1,
+                    grantProject: "",
+                    searchInfo: ""
+
                 },
                 data_list: [], //数据列表
                 disabled: false, //是否禁止滚动 true禁止
             }
         },
         components: {
-            
+
         },
         methods: {
             loadMore() { //下拉刷新触发
-         
+
                 if (!this.disabled) {
                     this.disabled = true;
                     let th = this
@@ -91,16 +97,16 @@
             getdata(call_back) {
                 let th = this
                 this.post('serviceCourse', 'getPrieduserList', this.piaowu, function(data) {
-                
 
 
-                        data.info.page.list.map(a => {
-                            a.evaluate = parseInt(a.evaluate)
-                            a.kh_de = 5 - a.evaluate
-                            a.grantProject=a.grantProject.split(",")
-                            th.data_list.push(a)
-                        })
-         
+
+                    data.info.page.list.map(a => {
+                        a.evaluate = parseInt(a.evaluate)
+                        a.kh_de = 5 - a.evaluate
+                        a.grantProject = a.grantProject.split(",")
+                        th.data_list.push(a)
+                    })
+
 
                     try {
                         call_back(data.info.page.list.length)
@@ -112,8 +118,14 @@
                 })
             }
         },
+        destroyed: function() {
+            this.disabled = true;
+        },
+        
         mounted() {
-
+            mui('.mui-scroll-wrapper').scroll({
+                deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+            });
         },
     }
 

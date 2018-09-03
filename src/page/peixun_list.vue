@@ -2,7 +2,7 @@
 	<div >
 	
 <header class="mui-bar mui-bar-nav asd_uy_dftx">
-         <van-icon name="arrow-left"  class="mui-pull-left z3 mt15" @tap="$router.back(-1)"/>
+         <van-icon name="arrow-left"  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">培训</h1>
 
     </header>
@@ -20,7 +20,7 @@
 
             </div>
             <span class="sd_jh_ddfrg"><i class="f_i add_icon_er"></i></span>
-        </div>
+        </div> 
       
         
         </section>
@@ -109,7 +109,7 @@
 
 
                     data.info.page.list.map(a => {
-        
+
                         a.evaluate = parseInt(a.evaluate)
                         a.kh_de = 5 - a.evaluate
                         th.data_list.push(a)
@@ -125,6 +125,9 @@
 
                 })
             }
+        },
+        destroyed: function() {
+            this.disabled = true;
         },
         mounted() {
 

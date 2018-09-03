@@ -1,12 +1,13 @@
 <template>
 	<section>
          <header class="mui-bar mui-bar-nav asd_uy_dftx">
-        <van-icon name="arrow-left"  class="mui-pull-left z3 mt15" @tap="$router.back(-1)"/>
+        <van-icon name="arrow-left"  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">活动详情</h1>
 
     </header>
         
-    <div class="mui-content ">
+     <div class="mui-scroll-wrapper df_jh_deertty ab" ref="mui_scroll">
+	<div class="mui-scroll">
      
             <img :src="sd.activityImg" class="w100 kx">
         <section class="bgff">
@@ -16,7 +17,7 @@
                <p class="mui-col-xs-3 fz12 z3 tr">已报名{{sd.signNum}}人</p>
             <p class="qc"></p>
         </section>
-        <section class="btm pt10 pm10 pd dian">
+        <section class="btm pt10 pm10 pd dian" @click="$store.state.is_map=true">
             <span class="d_jh_deet cz">
                 <i class="f_i map_icosder"></i>
             </span>
@@ -80,13 +81,14 @@
         </section>
         
         
-        
+    </div>
     </div>
         
-        
+
         </section> 
 </template>
 <script>
+
     import cg_ge from "../cg_ge.js"
     export default {
         data() {
@@ -95,17 +97,17 @@
             }
         },
         components: {
-
+            
         },
         methods: {
-
+ 
         },
-        mounted() {
+        created() {
             let sd_ddr = {},
                 th = this
             sd_ddr.id = this.$route.query.id_e
 
-            var sd_df_a = 'serviceActivity',
+            var sd_df_a = 'serviceActivity', 
                 sd_df_b = "getActivityDetail"
             if (this.$route.query.type == 1) {
                 sd_df_a = 'serviceEvent',
@@ -113,8 +115,6 @@
             }
 
             this.post(sd_df_a, sd_df_b, sd_ddr, function(data) {
-
-
                 if (th.$route.query.type == 1) {
                     th.sd = cg_ge.xxiangq_w(data.info.jshbEventDetails)
                     console.log(data.info.jshbEventDetails);
@@ -122,9 +122,13 @@
                     th.sd = cg_ge.xxiangq_w(data.info.jshbActivityDetails)
                 }
 
-
+          mui('.mui-scroll-wrapper').scroll({
+                deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+            });
 
             })
+            
+          
 
         },
     }

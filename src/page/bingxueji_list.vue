@@ -93,6 +93,9 @@
 
             }
         },
+        destroyed: function() {
+            this.disabled = true;
+        },
         mounted() {
 
         },

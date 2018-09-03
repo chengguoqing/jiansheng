@@ -22,3 +22,4 @@ npm run build
 npm run build --report
 ```
 
+1.新增加 页面  约动友
