@@ -21,14 +21,14 @@
 							</p>
 						</section>
 
-						<section class="sd_jh_cer" @tap="hf_right('yuedongyou')">
+					<!--	<section class="sd_jh_cer" @tap="hf_right('yuedongyou')">
 							<p>
 								<i class="f_i dsfer_jh_der ac"></i>
 							</p>
 							<p class="z6 fz14">
 								约动友
 							</p>
-						</section>
+						</section>-->
 
 						<section class="sd_jh_cer" @click="hf_right('huodong?type=1')">
 							<p>
@@ -39,22 +39,22 @@
 							</p>
 						</section>
 
-						<section class="sd_jh_cer" @click="hf_right('peixun_list')">
+						<!--<section class="sd_jh_cer" @click="hf_right('peixun_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ae"></i>
 							</p>
 							<p class="z6 fz14">
 								培训
 							</p>
-						</section>
-						<section class="sd_jh_cer" @tap="hf_right('application_form')">
+						</section>-->
+						<!--<section class="sd_jh_cer" @tap="hf_right('application_form')">
 							<p>
 								<i class="f_i dsfer_jh_der"></i>
 							</p>
 							<p class="z6 fz14">
 								课程
 							</p>
-						</section>
+						</section>-->
 						<section class="sd_jh_cer" @tap="hf_right('piaowu_list')">
 							<p>
 								<i class="f_i dsfer_jh_der ab" @click="zhu('ticket_service')"></i>
@@ -76,18 +76,18 @@
 						<p class="qc"></p>
 
 					</div>
-				</div> 
+				</div>
 
 			</section>
-           
-			
+
+
 			<section class="pd fz14 z6 pt5 pm5">
 				推荐场馆
 				<span class="fr" @click="hf('yuechangguan_list')">全部></span>
 			</section>
 <!--  hf('changguan_detail?id='+sd.id)-->
 			<section class="pd bgff pt10 pm10 mb5" v-for="sd in sd" @tap="hf_right('changguan_detail','?id='+sd.id)" >
-			
+
                   <section class="df_jh_deertds" :style="{'background-image': 'url('+sd.venueImg+') '}">
     </section>
 				<section class="pd pt10  cen fz16 dsf_jh_dr">
@@ -116,12 +116,12 @@
         },
         methods: {
 
-        
+
             op_iud(id) {
-               
+
                  this.hf('changguan_detail?id='+id)
                 return
-                let url_e = "index.html?/#/changguan_detail?id=" 
+                let url_e = "index.html?/#/changguan_detail?id="
                 mui.openWindow({
                     url: url_e+ id,
                     id: url_e,
