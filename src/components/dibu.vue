@@ -23,7 +23,7 @@
             <span class="mui-tab-label">订单</span>
 
         </a>
-          <a class="mui-tab-item "  :class="active==4?'mui-active':''">
+          <a class="mui-tab-item "  :class="active==4?'mui-active':''" @tap="hf('login')">
             <p>
                <i class="f_i dsf_jh_dsf ad"></i>
             </p>

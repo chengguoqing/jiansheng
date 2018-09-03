@@ -14,7 +14,9 @@ import jiaolian_detail from '@/page/jiaolian_detail'
 import yuedongyou from '@/page/yuedongyou'
 import fabuyaoyue from '@/page/fabuyaoyue'
 import search from '@/page/search'
+import login from '@/page/login'
 Vue.use(Router)
+
 
 export default new Router({
     routes: [
@@ -74,6 +76,10 @@ export default new Router({
             path: '/search',
             name: 'search',
             component: search
+    }, {
+            path: '/login',
+            name: 'login',
+            component: login
     }
   ]
 })
