@@ -6,9 +6,9 @@
 		<section class="deng_d_errt" id="seek_apper">
 			<p class="pd tr">
 
-				<i class="f_i colose_ddrt mui-action-back" @click="tuichu"></i>
+				<i class="f_i colose_ddrt mui-action-back" ></i>
 			</p>
-<textarea v-model="sd_eerert" ></textarea>
+
 			<section class="sd_ih_Cde pt30">
 				<p class="cen">
 					<img src="../assets/img/denglu_d.png" class="deg_deert">
@@ -75,18 +75,13 @@
                             "access_token": "13_DAeC-fuSxHZX8PmGvWuDXR5RySJvOlXNMsc7hGwhcxgM2h7GifN7g4T26eEnjiI9Gz0zKcRaJyAtpVlXeE-UM8GtWmOSwyslpUGbK0T_0sU",
                             "openid": "oRrdQtyeb9GhM5hEJ5-gcLtdWrSs"
                         }
-                    }
+                    },
                 }
             }
         },
         methods: {
-            tuichu: function() {
-                mui.back()
-            },
-            weo_ser() {
 
 
-            },
             weixdl: function() {
                 let th = this
                 this.auths.map(function(a) {
@@ -113,9 +108,8 @@
 
                 })
             },
-            dengl_e: function() {
-                var seldf = plus.webview.getLaunchWebview()
-                seldf.evalJS("sdf_df();");
+            dengl_e() {
+
             }
         },
         mounted: function() {
