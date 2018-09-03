@@ -7,8 +7,8 @@
         <h1 class="mui-title z3">课程报名</h1>
 
     </header>
- 
-        
+
+
             <div class="mui-content df_cfrf_rrrt" >
               <van-tabs @tap="sd_xert" >
                    <section class="mui-row cen pt10 pm10 bbm  bgff df_deeertyx">
@@ -22,9 +22,9 @@
             {{spja}}  <i class="f_i dowun_icon"></i>
             </section>
         </section>
-                  
+
             <van-tab v-for="index in sd_cdr" :title="index.name" >
-             
+
                       <ul>
             <li class="bbm pt10 pm10 pd" v-for="sd in index.date_w">
                 <img :src="sd.courseImg" class="fl ferng_s">
@@ -36,7 +36,7 @@
                         <i class="f_i xinxisdrr mr5" v-for="sd in sd.evaluate"></i>
                     <i class="f_i xinxisdrr mr5 ab" v-for="sd in sd.get_hu"></i>
                     </p>
-                    
+
                     <p class="red fz16">
                         ￥{{sd.coursePrice}}
                     </p>
@@ -44,23 +44,23 @@
                     已报名：{{sd.orderNum}}人
                     </p>
                 </section>
-                
-                
+
+
                 <p class="qc"></p>
-                
+
             </li>
-        
+
         </ul>
-                
-                
-                
+
+
+
             </van-tab>
-        </van-tabs>   
+        </van-tabs>
     </div>
          <select_r  :columns="columns_w" @get_data="get_data" v-if="in_der==2"></select_r>
         <select_r  :columns="columns_e" @get_data="get_data" v-if="in_der==3"></select_r>
-        
-     
+
+
     </section>
 </template>
 <script>
@@ -132,11 +132,12 @@
                 sd_ddr.city = ""
                 sd_ddr.isRecommend = this.isRecommend //门推荐 1 其他 NULL
                 sd_ddr.orderBy = this.orderBy
+                console.log(courseItem)
                 sd_ddr.courseItem = courseItem //项目
                 sd_ddr.searchInfo = "" //搜索内容
                 sd_ddr.pageNo = this.pageNo
                 sd_ddr.pageSize = 10
-
+                console.log(courseItem)
                 this.post('serviceCourse', 'getCourseList', sd_ddr, function(data) {
                     callback(data.info.page.list)
                 })
@@ -179,7 +180,6 @@
                 })
 
                 th.get_dated(th.sd_cdr[0])
-
             })
         },
     }
