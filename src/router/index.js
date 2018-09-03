@@ -15,6 +15,7 @@ import yuedongyou from '@/page/yuedongyou'
 import fabuyaoyue from '@/page/fabuyaoyue'
 import search from '@/page/search'
 import login from '@/page/login'
+import user_center from '@/page/user_center'
 Vue.use(Router)
 
 
@@ -80,6 +81,10 @@ export default new Router({
             path: '/login',
             name: 'login',
             component: login
+    }, {
+            path: '/user_center',
+            name: 'user_center',
+            component: user_center
     }
   ]
 })

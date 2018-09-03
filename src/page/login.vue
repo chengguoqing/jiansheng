@@ -8,7 +8,7 @@
 
 				<i class="f_i colose_ddrt mui-action-back" @click="tuichu"></i>
 			</p>
-
+<textarea v-model="sd_eerert" ></textarea>
 			<section class="sd_ih_Cde pt30">
 				<p class="cen">
 					<img src="../assets/img/denglu_d.png" class="deg_deert">
@@ -63,7 +63,20 @@
     export default {
         data() {
             return {
-
+                sd_eerert: {
+                    "target": {
+                        "id": "weixin",
+                        "description": "微信",
+                        "authResult": {
+                            "code": "0235pstC08RR9f2awItC0rmCtC05psti",
+                            "refresh_token": "12_RI364l1BNUcmwTEkcPGA55PK5LGiO9jSdRmRNe5DffYBb8v0NyNtehDAJqUVwWZfq_RLwfU0mifkLTmRIa0m8lBZhU4y_CJbbnt8yimGnkY",
+                            "scope": "snsapi_userinfo",
+                            "expires_in": 5900.157,
+                            "access_token": "13_DAeC-fuSxHZX8PmGvWuDXR5RySJvOlXNMsc7hGwhcxgM2h7GifN7g4T26eEnjiI9Gz0zKcRaJyAtpVlXeE-UM8GtWmOSwyslpUGbK0T_0sU",
+                            "openid": "oRrdQtyeb9GhM5hEJ5-gcLtdWrSs"
+                        }
+                    }
+                }
             }
         },
         methods: {
@@ -75,14 +88,18 @@
 
             },
             weixdl: function() {
+                let th = this
                 this.auths.map(function(a) {
                     if (a.id == "weixin") {
                         var s = a;
                         if (!s.authResult) {
                             s.login(function(e) {
-                                 alert(JSON.stringify(e))
-                                this.post('service', 'otherLogin', e, function(data) {
-                                        alert(JSON.stringify(data))
+
+                                let df_der = e.target.authResult
+                                alert(JSON.stringify(df_der)) //弹出参数
+                                th.post('service', 'otherLogin', df_der, function(data) {
+                                    //                                    登录成功跳转个人中心
+                                    th.hf('user_center')
                                 })
                             }, function(e) {
                                 alert(JSON.stringify(e))
