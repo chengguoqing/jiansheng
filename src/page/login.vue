@@ -91,7 +91,6 @@ export default {
   methods: {
     weixdl: function() {
       let th = this;
-      
       this.auths.map(function(a) {
         if (a.id == "weixin") {
           var s = a;
@@ -99,7 +98,7 @@ export default {
           if (!s.authResult) {
             s.login(
               function(e) {
-                 let df_der = e.target.authResult;
+                let df_der = e.target.authResult;
                 th.sd_eerert.target.authResult.openId = df_der.openid;
                 th.sd_eerert.target.authResult.headImg = s.userInfo.headimgurl;
                 th.sd_eerert.target.authResult.unionId = s.userInfo.unionid;
@@ -115,11 +114,11 @@ export default {
                   th.sd_eerert.target.authResult,
                   function(data) {
                     //alert(JSON.stringify(data));
-                    // plus.storage.setItem('userId',data.info.id);
-                    // plus.storage.setItem('userName',data.info.nickname);
-                    // plus.storage.setItem('token',data.info.token);
-                    // plus.storage.setItem('userImg',data.info.headImg)
-                    //this.$options.methods.authLogout();
+                    plus.storage.setItem("userId", data.info.id);
+                    plus.storage.setItem("userName", data.info.nickname);
+                    plus.storage.setItem("token", data.info.token);
+                    plus.storage.setItem("userImg", data.info.headImg);
+                    // this.$options.methods.authLogout();
                     // 登录成功跳转个人中心
                     th.hf("user_center");
                   }
@@ -157,21 +156,17 @@ export default {
   mounted: function() {
     var th = this;
     // 监听plusready事件
-    document.addEventListener(
-      "plusready",
-      function() {
-        // 扩展API加载完毕，现在可以正常调用扩展API
-        plus.oauth.getServices(
-          function(services) {
-            th.auths = services;
-          },
-          function(e) {
-            alert("获取分享服务列表失败：" + e.message + " - " + e.code);
-          }
-        );
-      },
-      false
-    );
+    mui.plusReady(function() {
+      // 扩展API加载完毕，现在可以正常调用扩展API
+      plus.oauth.getServices(
+        function(services) {
+          th.auths = services;
+        },
+        function(e) {
+          alert("获取分享服务列表失败：" + e.message + " - " + e.code);
+        }
+      );
+    });
   }
 };
 </script>
