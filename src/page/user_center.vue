@@ -5,8 +5,8 @@
 		<section class="user_top_e pr">
 			<img src="../assets/img/user_top.jpg" class="w100 kx">
 			<section class="use_df_der">
-				<img src="img/user_icon.png" class="yj user_iconsdre">
-				<p class="z3 fz14">黄雯Wendy</p>
+				<img :src="userImg" class="yj user_iconsdre">
+				<p class="z3 fz14">{{userName}}</p>
 			</section>
 		</section>
 		<section class="mui-row pt15 pm15 cen bgff" > 
@@ -69,26 +69,25 @@
 		</section>
 </template>
 <script>
-     import dibu from "../components/dibu"
-    export default {
-        data() {
-            return {
-
-            }
-        },
-        components: {
-dibu
-        },
-        methods: {
-
-        },
-        mounted() {
-
-        },
-    }
-
+import dibu from "../components/dibu";
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    userName: function () {
+      return plus.storage.getItem("userName");
+	},
+	userImg: function () {
+      return plus.storage.getItem("userImg");
+	},
+  },
+  components: {
+    dibu
+  },
+  methods: {},
+  mounted() {}
+};
 </script>
 <style scoped>
-
-
 </style>
