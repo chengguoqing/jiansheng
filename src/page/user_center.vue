@@ -64,6 +64,13 @@
 					</p>
 					<span class="fz15 z3">设置</span>
     </van-cell>
+	                 <van-cell is-link @click="authLogout">
+				
+					<p class="df_jh_ddfg">
+						<i class="f_i dsf_jh_a ae"></i>
+					</p>
+					<span class="fz15 z3">退出登录</span>
+    </van-cell>
 	   </van-cell-group>
             <dibu :active="4"></dibu>
 		</section>
@@ -85,8 +92,43 @@ export default {
   components: {
     dibu
   },
-  methods: {},
-  mounted() {}
+  methods: {
+    authLogout: function() {
+      for (var i in auths) {
+        var s = auths[i];
+        if (s.authResult) {
+          s.logout(
+            function(e) {
+              console.log("注销登录认证成功！");
+            },
+            function(e) {
+              console.log("注销登录认证失败！");
+            }
+          );
+        }
+      }
+    }
+  },
+  mounted() {
+    var th = this;
+    // 监听plusready事件
+    document.addEventListener(
+      "plusready",
+      function() {
+        // 扩展API加载完毕，现在可以正常调用扩展API
+        plus.oauth.getServices(
+          function(services) {
+            th.auths = services;
+          },
+          function(e) {
+            alert("获取分享服务列表失败：" + e.message + " - " + e.code);
+          }
+        );
+      },
+      false
+    );
+
+  }
 };
 </script>
 <style scoped>
