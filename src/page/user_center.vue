@@ -45,7 +45,7 @@
 					</p>
 					<span class="fz15 z3">场馆入驻</span>
     </van-cell>
-			 <van-cell is-link >
+			 <van-cell is-link to="yijianfankui">
 					<p class="df_jh_ddfg">
 						<i class="f_i dsf_jh_a ac"></i>
 					</p>
@@ -64,72 +64,93 @@
 					</p>
 					<span class="fz15 z3">设置</span>
     </van-cell>
-	                 <van-cell is-link @click="authLogout">
-				
+	               <van-cell is-link >
+				    <section @tap="authLogout">
 					<p class="df_jh_ddfg">
 						<i class="f_i dsf_jh_a ae"></i>
 					</p>
 					<span class="fz15 z3">退出登录</span>
-    </van-cell>
+                        </section>
+                </van-cell>
 	   </van-cell-group>
             <dibu :active="4"></dibu>
 		</section>
 </template>
 <script>
-import dibu from "../components/dibu";
-export default {
-  data() {
-    return {};
-  },
-  computed: {
-    userName: function () {
-      return plus.storage.getItem("userName");
-	},
-	userImg: function () {
-      return plus.storage.getItem("userImg");
-	},
-  },
-  components: {
-    dibu
-  },
-  methods: {
-    authLogout: function() {
-      for (var i in auths) {
-        var s = auths[i];
-        if (s.authResult) {
-          s.logout(
-            function(e) {
-              console.log("注销登录认证成功！");
-            },
-            function(e) {
-              console.log("注销登录认证失败！");
-            }
-          );
-        }
-      }
-    }
-  },
-  mounted() {
-    var th = this;
-    // 监听plusready事件
-    document.addEventListener(
-      "plusready",
-      function() {
-        // 扩展API加载完毕，现在可以正常调用扩展API
-        plus.oauth.getServices(
-          function(services) {
-            th.auths = services;
-          },
-          function(e) {
-            alert("获取分享服务列表失败：" + e.message + " - " + e.code);
-          }
-        );
-      },
-      false
-    );
+    import dibu from "../components/dibu";
+    export default {
+        data() {
+            return {
+                auths: ""
 
-  }
-};
+            };
+        },
+        computed: {
+            userName: function() {
+                try {
+                    return plus.storage.getItem("userName");
+                } catch (e) {
+                    return '';
+                }
+
+            },
+            userImg: function() {
+                try {
+                    return plus.storage.getItem("userImg");
+                } catch (e) {
+                    return '';
+                }
+            },
+        },
+        components: {
+            dibu
+        },
+        methods: {
+            authLogout: function() {
+                let th = this
+
+                for (var i in this.auths) {
+                    var s = th.auths[i];
+
+                    if (s.authResult) {
+                        s.logout(
+                            function(e) {
+                                alert("注销登录认证成功！");
+                                try {
+                                    plus.storage.removeItem('token');
+                                } catch (e) {
+
+                                }
+                                th.hf("login")
+                            },
+                            function(e) {
+                                alert("注销登录认证失败！");
+                            }
+                        );
+                    }
+                }
+            }
+        },
+        mounted() {
+            var th = this;
+            // 监听plusready事件
+            mui.plusReady(function() {
+                // 扩展API加载完毕，现在可以正常调用扩展API
+                plus.oauth.getServices(
+                    function(services) {
+                        th.auths = services;
+                    },
+                    function(e) {
+                        alert("获取分享服务列表失败：" + e.message + " - " + e.code);
+                    }
+                );
+            });
+
+        }
+    };
+
 </script>
 <style scoped>
+
+
 </style>

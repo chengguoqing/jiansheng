@@ -23,7 +23,7 @@
             <span class="mui-tab-label">订单</span>
 
         </a>
-          <a class="mui-tab-item "  :class="active==4?'mui-active':''" @tap="hf('login')">
+          <a class="mui-tab-item "  :class="active==4?'mui-active':''" @tap="dibu_eert">
             <p>
                <i class="f_i dsf_jh_dsf ad"></i>
             </p>
@@ -37,7 +37,7 @@
 <script>
     export default {
         props: {
-            active:0
+            active: 0
         },
         data() {
             return {
@@ -49,7 +49,20 @@
 
         },
         methods: {
+            dibu_eert() {
+                let sd_derr = ""
+                try {
+                    sd_derr = plus.storage.getItem("token")
 
+                } catch (e) {
+                    sd_derr = 'e13467baf3e67b6af142e12ede4157a5'
+                }
+                if (sd_derr) {
+                    this.hf('user_center')
+                } else {
+                    this.hf('login')
+                }
+            }
         },
         mounted() {
 

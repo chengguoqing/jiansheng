@@ -16,6 +16,9 @@ import fabuyaoyue from '@/page/fabuyaoyue'
 import search from '@/page/search'
 import login from '@/page/login'
 import user_center from '@/page/user_center'
+import yijianfankui from '@/page/yijianfankui'
+import register_zhu from '@/page/register_zhu'
+import register_er from '@/page/register_er'
 Vue.use(Router)
 
 
@@ -85,6 +88,18 @@ export default new Router({
             path: '/user_center',
             name: 'user_center',
             component: user_center
+    }, {
+            path: '/yijianfankui',
+            name: 'yijianfankui',
+            component: yijianfankui
+    }, {
+            path: '/register_zhu',
+            name: 'register_zhu',
+            component: register_zhu
+    }, {
+            path: '/register_er',
+            name: 'register_er',
+            component: register_er
     }
   ]
 })

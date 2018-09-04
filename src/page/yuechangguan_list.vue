@@ -23,13 +23,13 @@
         
          <div class="  mui-scroll-wrapper df_jh_deertty" ref="mui_scroll">
 	<div class="mui-scroll">
-        
-    
+         
+
             
             <section v-waterfall-lower="loadMore"
   waterfall-disabled="disabled"
-  waterfall-offset="0">
-    
+  waterfall-offset="0">222
+        <textarea v-model="tet_der" ></textarea>
                 
                 <section class="pd pt10" v-for="sd in data_list" @click="disabled=true;hf('changguan_detail?id='+sd.id)">
                     <img :src="sd.venueImg" class="w100 ssdf_df_a kx">
@@ -63,6 +63,7 @@
     export default {
         data() {
             return {
+                tet_der:"",
                 projectList: [],
                 qingqiu: {
                     venueCity: this.$store.state.venueCity, //这样的变量 在store=》index.js
@@ -168,7 +169,7 @@
         mounted() {
             //            this.get_data()
 
-
+            this.tet_der=plus.storage.getItem("token")
             let th=this
             mui('.mui-scroll-wrapper').scroll({
                 deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
