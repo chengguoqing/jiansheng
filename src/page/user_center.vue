@@ -10,27 +10,27 @@
 			</section>
 		</section>
 		<section class="mui-row pt15 pm15 cen bgff" > 
-			<section class="mui-col-xs-3">
+			<section class="mui-col-xs-3" @tap="hf('my_order?type=1')">
 				<i class="f_i df_fdf_dsdr pr"></i>
 				<p class="mt2">待付款</p>
 			</section>
-			<section class="mui-col-xs-3">
+			<section class="mui-col-xs-3"  @tap="hf('my_order?type=2')">
 				<i class="f_i df_fdf_dsdr pr ab"></i>
-				<p class="mt2">待付款</p>
+				<p class="mt2">已付款</p>
 			</section>
-			<section class="mui-col-xs-3">
+			<section class="mui-col-xs-3"  @tap="hf('my_order?type=3')">
 				<i class="f_i df_fdf_dsdr pr ac"><span class="sd_e_rtde">2</span></i>
-				<p class="mt2">待付款</p>
+				<p class="mt2">已完成</p>
 			</section>
-			<section class="mui-col-xs-3">
+			<section class="mui-col-xs-3"  @tap="hf('my_order?type=4')">
 				<i class="f_i df_fdf_dsdr pr ad"></i>
-				<p class="mt2">待付款</p>
+				<p class="mt2">回收站</p>
 			</section>
 
 		</section>
 
             <van-cell-group>
-                <van-cell is-link >
+                <van-cell is-link to="jiaolianshenqing">
                     <p class="df_jh_ddfg">
 						<i class="f_i dsf_jh_a"></i>
 					</p>
@@ -39,7 +39,7 @@
                 
                 
          
-			 <van-cell is-link >
+			 <van-cell is-link to="changguanruzhu">
 					<p class="df_jh_ddfg">
 						<i class="f_i dsf_jh_a ab"></i>
 					</p>
@@ -57,7 +57,7 @@
 					</p>
 					<span class="fz15 z3">邀请好友</span>
     </van-cell>
-                 <van-cell is-link >
+                 <van-cell is-link to="shezhi">
 				
 					<p class="df_jh_ddfg">
 						<i class="f_i dsf_jh_a ae"></i>

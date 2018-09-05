@@ -2,13 +2,13 @@
 	<div >
 	
  <header class="mui-bar mui-bar-nav asd_uy_dftx">
-        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left z3"></a>
+        <van-icon name="arrow-left"  class="mui-pull-left z3 mt15  mui-action-back" />
         <h1 class="mui-title z3">注册账号</h1>
         <a class="mui-action-back  mui-pull-right">
 
         </a>
-    </header>
-    <div class="mui-content " id="seek_apper">
+    </header> 
+    <div class="mui-content bgff" id="seek_apper">
 
         <section class="sd_ih_Cde pt30">
             <ul>

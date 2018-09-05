@@ -908,6 +908,14 @@ display: inline-block;
 .df_jh_deertty.ab{
     padding-top: 59px;
 }
+.df_jh_deertty.ac{
+       padding-top: 100px;
+}
 .df_jh_erdert{
     padding-bottom: 80px;
+}
+
+.van-button--plain.van-button--primary{
+        color: #259fdf;
+        border: 1px solid #259fdf;
 }

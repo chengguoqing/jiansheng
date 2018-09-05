@@ -1,6 +1,6 @@
 <template>
 	<div >
-	
+	 
        <header class="mui-bar mui-bar-nav asd_uy_dftx">
                 <van-icon name="arrow-left "  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">约场馆</h1>
@@ -28,8 +28,8 @@
             
             <section v-waterfall-lower="loadMore"
   waterfall-disabled="disabled"
-  waterfall-offset="0">222
-        <textarea v-model="tet_der" ></textarea>
+  waterfall-offset="0">
+    
                 
                 <section class="pd pt10" v-for="sd in data_list" @click="disabled=true;hf('changguan_detail?id='+sd.id)">
                     <img :src="sd.venueImg" class="w100 ssdf_df_a kx">

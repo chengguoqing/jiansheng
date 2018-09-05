@@ -22,7 +22,7 @@
         </section>
         
         <section class="pl10 pt10 mui-row">
-                <section class="mui-col-xs-6 pr10 mb10" v-for="sd in data_list">
+                <section class="mui-col-xs-6 pr10 mb10" v-for="sd in data_list" @tap="hf('goupiaoxq?id='+sd.id)">
                     <section>
                         <img :src="sd.showImg" class="w100 sd_dre_er kx">
                         <section class="cf_hj_dett">

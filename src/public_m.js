@@ -2,9 +2,12 @@ import router from './router'
 import jiami from './jiami.js'
 export default {
     install(Vue, options) {
-        Vue.prototype.ge_t = function (url, cn, xy) {
-
-            this.$http.get(sd_iux + url, {
+        Vue.prototype.ge_t = function (sdsd_a, sdsd_b, cn, xy) {
+            cn = JSON.stringify(cn)
+            var url_dre = jiami.getRequest(sdsd_a, sdsd_b, cn),
+                th = this
+            this.$store.state.load_in = true
+            this.$http.get(url_dre, {
                 params: cn
             }).then((response) => {
                 xy(response.data)
@@ -18,6 +21,7 @@ export default {
             var url_dre = jiami.getRequest(sdsd_a, sdsd_b, cn),
                 th = this
             this.$store.state.load_in = true
+        
             this.$http.post(url_dre).then((res) => {
                 th.$store.state.load_in = false
                 var str = res.bodyText.toString().replace(/[\r\n]/g, '');
@@ -28,7 +32,7 @@ export default {
                 xy(resultList)
 
             }, (response) => {
-               alert('接口请求异常')
+                alert('接口请求异常')
             });
         }
 
@@ -73,10 +77,10 @@ export default {
                 query: cu
             })
         }
-        Vue.prototype.hf_right = function (url,canshu, cu) { //路由跳转
+        Vue.prototype.hf_right = function (url, canshu, cu) { //路由跳转
             let url_e = "index.html?/#/" + url
-            if(!canshu){
-                canshu=""
+            if (!canshu) {
+                canshu = ""
             }
             if (mui.os.ios) {
                 mui.openWindow({
@@ -89,7 +93,7 @@ export default {
                 });
             } else {
                 router.push({
-                    path: "/" + url+canshu
+                    path: "/" + url + canshu
                 })
             }
         }
@@ -140,6 +144,15 @@ export default {
             return parseFloat(t).toFixed(2)
         })
 
+        Vue.filter("time", function (t) {
+            var crtTime = new Date();
+            crtTime.setTime(t)
+            return dateFtt("yyyy/MM/dd", crtTime);
+        })
+
+
+
+
         Vue.prototype.getsign = function (datex) {
 
             var sdsr_sd = {}
@@ -158,4 +171,28 @@ export default {
 
 
     }
+}
+
+
+
+
+
+
+
+function dateFtt(fmt, date) { //author: meizz
+    var o = {
+        "M+": date.getMonth() + 1, //月份
+        "d+": date.getDate(), //日
+        "h+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds(), //秒
+        "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+        "S": date.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt))
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt))
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
 }

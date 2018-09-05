@@ -19,6 +19,12 @@ import user_center from '@/page/user_center'
 import yijianfankui from '@/page/yijianfankui'
 import register_zhu from '@/page/register_zhu'
 import register_er from '@/page/register_er'
+import my_order from '@/page/my_order'
+import order_xq from '@/page/order_xq'
+import goupiaoxq from '@/page/goupiaoxq'
+import jiaolianshenqing from '@/page/jiaolianshenqing'
+import changguanruzhu from '@/page/changguanruzhu'
+import shezhi from '@/page/shezhi'
 Vue.use(Router)
 
 
@@ -100,6 +106,30 @@ export default new Router({
             path: '/register_er',
             name: 'register_er',
             component: register_er
+    }, {
+            path: '/my_order',
+            name: 'my_order',
+            component: my_order
+    }, {
+            path: '/order_xq',
+            name: 'order_xq',
+            component: order_xq
+    }, {
+            path: '/goupiaoxq',
+            name: 'goupiaoxq',
+            component: goupiaoxq
+    }, {
+            path: '/jiaolianshenqing',
+            name: 'jiaolianshenqing',
+            component: jiaolianshenqing
+    }, {
+            path: '/changguanruzhu',
+            name: 'changguanruzhu',
+            component: changguanruzhu
+    }, {
+            path: '/shezhi',
+            name: 'shezhi',
+            component: shezhi
     }
   ]
 })

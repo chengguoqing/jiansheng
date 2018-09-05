@@ -10,20 +10,22 @@
     </header>
         
         
-          <div class="mui-content " id="seek_apper" v-waterfall-lower="loadMore"
+           <div class="  mui-scroll-wrapper df_jh_deertty ab" ref="mui_scroll">
+	<div class="mui-scroll">
+        <div v-waterfall-lower="loadMore"
   waterfall-disabled="disabled"
   waterfall-offset="0">
               <section class="sd_kjj_dr bgff pd pt10" v-for="sd in data_list">
-                <img src="../assets/img/banner.jpg" class="yj user_icon_e kx cz fl">
+                <img :src="sd.user.headImg" class="yj user_icon_e kx cz fl">
                   <section class="ov pl10">
                     <p class="mt5">
-                    <span class="fz16 z3">萱萱</span>
+                    <span class="fz16 z3">{{sd.user.nickname}}</span>
                         <span class="jiao_ertx">教</span>
                         
-                        <span class="fz12 fr"><i class="f_i map_icon_e"></i> 200m</span>
+                        <span class="fz12 fr"><i class="f_i map_icon_e"></i>  {{sd.distance/1000}}/km</span>
                     </p>
                       <p class="fz12 mt2"> 
-                    我请客(男女不限)
+                    {{sd.activityType}}({{sd.activityObject}})
                     </p>
                       
                     </section>
@@ -44,9 +46,11 @@
                   
                   
             </section>
-              
+               
     </div>
-        
+    </div>
+    </div>
+         
         
 <section class="sd_jerth_deet mui-row">
         <section class="mui-col-xs-6">
@@ -123,7 +127,9 @@ console.log(data);
             }
         },
         mounted() {
-
+   mui('.mui-scroll-wrapper').scroll({
+                deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+            });
         },
     }
 
@@ -200,6 +206,7 @@ console.log(data);
         width: 100%;
         line-height: 50px;
         height: 50px;
+        z-index: 1000
     }
 
     .sd_jerth_deet button {
