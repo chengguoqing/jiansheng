@@ -28,9 +28,7 @@ export default {
                 xy(resultList)
 
             }, (response) => {
-                router.push({
-                    path: "/login"
-                })
+               alert('接口请求异常')
             });
         }
 

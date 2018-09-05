@@ -2,7 +2,7 @@
 		<section id="seek_apper">
 			<section class="sdf_jh_der bgff pl10">
 				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted sdf_erjh_dert">
-					<div class="mui-scroll ">
+					<div class="mui-scroll "> 
 
 						<section class="sd_jh_cer" @click="hf_right('yuechangguan_list')"  >
 							<p>

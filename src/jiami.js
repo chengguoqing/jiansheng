@@ -14,7 +14,7 @@ function encryptByDES(data) {
     return encrypted.ciphertext.toString(CryptoJS.enc.Base64);
 }
 
-exports.decryptByDES=function(data) {
+exports.decryptByDES = function (data) {
     var keyHex = CryptoJS.enc.Utf8.parse(key);
     var decrypted = CryptoJS.DES.decrypt({
         ciphertext: CryptoJS.enc.Base64.parse(data)
@@ -26,15 +26,22 @@ exports.decryptByDES=function(data) {
 }
 
 function getToken() {
-    var token = '';
-    if (localStorage.token) {
-        token = localStorage.token;
+    var token = '',
+        sd_derr = ""
+    try {
+        sd_derr = plus.storage.getItem("token")
+
+    } catch (e) {
+        sd_derr = 'e13467baf3e67b6af142e12ede4157a5'
+    }
+    if (sd_derr) {
+        token = sd_derr;
     } else {
         token = '';
-    } 
+    }
     return token;
 }
-exports.getRequest=function(service, a, params, call_back) {
+exports.getRequest = function (service, a, params, call_back) {
 
     var tokenStr = getToken();
     var time = new Date().getTime().toString();
@@ -46,7 +53,7 @@ exports.getRequest=function(service, a, params, call_back) {
         str = str.replace(/[\r\n]/g, '').replace(/"/g, '').replace(/\s/g, "");
         sign = CryptoJS.MD5(str);
         /* sign = "441f3f24f7fca4409306debb05f9be4d"; */
-     
+
 
     } else {
 
@@ -55,7 +62,7 @@ exports.getRequest=function(service, a, params, call_back) {
         str = str.replace(/[\r\n]/g, '').replace(/"/g, '').replace(/\s/g, "");
         sign = CryptoJS.MD5(str);
         /* sign = "441f3f24f7fca4409306debb05f9be4d"; */
-       
+
     }
     params = encryptByDES(params).toString().replace(/\+/g, "%2B").replace(/\&/g, "%26");
     a = encryptByDES(a).toString().replace(/\+/g, "%2B").replace(/\&/g, "%26");
