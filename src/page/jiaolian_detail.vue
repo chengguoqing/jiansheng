@@ -27,8 +27,8 @@
             <p class="pd mt10">
                 <span class="ls">教练资质</span> 
             </p>
-            <p class="cen mt100">
-                <img src="../assets/img/dsf_sdf.png" class="dsf_sdf_eer">
+            <p class="pd pt10 pm10 z3">
+                {{sd.qualifications}}
             </p>
 
         </section>
@@ -38,7 +38,7 @@
                 <span class="ls">可授项目</span> 
             </p>
             <p class="pd pt10 pm10 z3">
-            瑜伽、太极拳、舞蹈、游泳
+            {{sd.grantProject}}
             </p>
 
         </section>
@@ -48,7 +48,7 @@
                 <span class="ls">教学场地</span> 
             </p>
             <p class="pd pt10 pm10 z3">
-            河北省石家庄市某街某巷某号某楼
+                暂无信息
             </p>
 
         </section>
@@ -59,9 +59,7 @@
                 <span class="ls">个人简历</span> 
             </p>
             <p class="pd pt10 pm10 z3 dfser_jh_deer">
-            毕业于石家庄经济学院，持有计算机和五笔证书，在
-校期间进修瑜伽至今已有5年多， 现持有高级瑜伽导师证
-书和各种瑜伽特色课程证书，擅长哈他瑜伽。
+       {{sd.currVitae}}
             </p>
 
         </section>
@@ -170,7 +168,8 @@
             this.post('serviceCourse', 'getPrieduserDetail', {
                 prieduserId: this.$route.query.id
             }, function(data) {
-                console.log(data.info);
+                //console.log(data.info);
+                console.log(JSON.stringify(data.info));
                 th.jshbPrieduserImgList = data.info.jshbPrieduserImgList
                 th.sd = data.info.jshbPrieduser;
 

@@ -11,9 +11,8 @@
                 <p class="fz15 z3">反馈类型</p>
             <section class="mui-row">
                 <section class="mui-col-xs-4 pr10" v-for="sd in sd_ddfgf">
-                    <a class="dfd_drtt" :class="sd.cls" @click="dfdsf(sd)">{{sd.name}}</a>
+                    <a class="dfd_drtt" :class="sd.cls" @click="dfdsf(sd)">{{sd.name}}{{sd.index}}</a>
                 </section>
-            
             </section>
             
             </section>
@@ -43,19 +42,24 @@
         data() {
             return {
                 is_sdf: "mui-active",
+                classify:"1",
                 sdsd_jh_de: "",
                 sd_ddfgf: [{
                     cls: "act",
-                    name: "功能异常"
+                    name: "功能异常",
+                    index:1
                 }, {
                     cls: "",
-                    name: "体验问题"
+                    name: "体验问题",
+                     index:2
                 }, {
                     cls: "",
-                    name: "功能建议"
+                    name: "功能建议",
+                    index:3
                 }, {
                     cls: "",
-                    name: "其他"
+                    name: "其他",
+                    index:4
                 }, ]
             }
         },
@@ -68,13 +72,26 @@
                     a.cls = ""
                 })
                 sd.cls = "act"
+                this.classify = sd.index
             },
             tijiao: function() {
                 let th = this,
                     yijian = {}
-                yijian.type = "phone"
-                yijian.system = this.sdsd_jh_de
-
+                if(mui.os.ios){
+                    yijian.type = "ios"
+                }    
+                else if(mui.os.android){
+                    yijian.type = "android"
+                }
+                else{
+                    yijian.type = "otherSystem"
+                }
+                yijian.system = mui.os.version //手机版本号
+                yijian.phone = "" // 手机型号，获取不到，算了
+                yijian.path = "" //图片地址
+                yijian.content = th.sdsd_jh_de //评论内容
+                yijian.classify = th.classify  //意见类型
+                //console.log(yijian)
                 this.post('servicefile', 'setAppAdvise', yijian, function(data) {
                     mui.back()
                 })

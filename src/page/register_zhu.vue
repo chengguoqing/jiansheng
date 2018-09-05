@@ -73,9 +73,10 @@
                         return
                     }
                    
-                    th.post('service', 'checkPhoneValidate', { //发送验证码
+                    th.post('service', 'checkPhone', { //发送验证码
                         phone: th.phone
                     }, function(data) {
+                        console.log(data)
                         th.jhgg = false
                         th.daoji--
                             var sdf_wer = setInterval(function() {
