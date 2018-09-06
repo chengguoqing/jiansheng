@@ -15,7 +15,7 @@
             <span class="mui-tab-label">活动</span>
 
         </a>
-         <a class="mui-tab-item " :class="active==3?'mui-active':''">
+         <a class="mui-tab-item " :class="active==3?'mui-active':''" @tap="hf('my_order?type=0')">
            <p>
                <i class="f_i dsf_jh_dsf ac"></i>
             </p>

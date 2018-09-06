@@ -21,14 +21,14 @@
 							</p>
 						</section>
 
-					<section class="sd_jh_cer" @tap="hf_right('yuedongyou')">
+				<!--<section class="sd_jh_cer" @tap="hf_right('yuedongyou')">
 							<p>
 								<i class="f_i dsfer_jh_der ac"></i>
 							</p>
 							<p class="z6 fz14">
 								约动友
 							</p>
-						</section>
+						</section>-->
 
 						<section class="sd_jh_cer" @click="hf_right('huodong?type=1')">
 							<p>

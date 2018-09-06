@@ -10,19 +10,23 @@
 			</section>
 		</section>
 		<section class="mui-row pt15 pm15 cen bgff" > 
-			<section class="mui-col-xs-3" @tap="hf('my_order?type=1')">
+			<section class="mui-col-xs-3" @tap="hf('my_order?type=0')" style="width:20%">
+				<i class="f_i df_fdf_dsdr pr"></i>
+				<p class="mt2">全部</p>
+			</section>            
+			<section class="mui-col-xs-3" @tap="hf('my_order?type=1')" style="width:20%">
 				<i class="f_i df_fdf_dsdr pr"></i>
 				<p class="mt2">待付款</p>
 			</section>
-			<section class="mui-col-xs-3"  @tap="hf('my_order?type=2')">
+			<section class="mui-col-xs-3"  @tap="hf('my_order?type=2')" style="width:20%">
 				<i class="f_i df_fdf_dsdr pr ab"></i>
 				<p class="mt2">已付款</p>
 			</section>
-			<section class="mui-col-xs-3"  @tap="hf('my_order?type=3')">
+			<section class="mui-col-xs-3"  @tap="hf('my_order?type=3')" style="width:20%">
 				<i class="f_i df_fdf_dsdr pr ac"><span class="sd_e_rtde">2</span></i>
 				<p class="mt2">已完成</p>
 			</section>
-			<section class="mui-col-xs-3"  @tap="hf('my_order?type=4')">
+			<section class="mui-col-xs-3"  @tap="hf('my_order?type=4')" style="width:20%">
 				<i class="f_i df_fdf_dsdr pr ad"></i>
 				<p class="mt2">回收站</p>
 			</section>

@@ -27,7 +27,7 @@
                         <img :src="sd.showImg" class="w100 sd_dre_er kx">
                         <section class="cf_hj_dett">
                         <p class="dian z3 fz15">{{sd.showName}}</p>
-                        <p class="fz12 z9">
+                        <p class="fz12 z9 dian">
                         <span class="red fz14">￥{{sd.ticketPrice}}元</span>
 <!--                            <span>(下单立减20元)</span>-->
                         </p>
@@ -60,7 +60,7 @@
                     pageSize: 10, //
                     showType: "", //
                     searchInfo: "", //1.电竞 2.体育 3.游展 4.其他
-                    showCity: this.$store.state.venueCity //
+                    showCity: ""//this.$store.state.venueCity //
                 },
                 data_list: [], //数据列表
                 disabled: false, //是否禁止滚动 true禁止
@@ -130,7 +130,7 @@
         mounted() {
             let getShowHome={},
                 th=this
-            getShowHome.showCity= this.$store.state.venueCity
+            getShowHome.showCity= ""//this.$store.state.venueCity
             this.post('serviceShow', 'getShowHome', getShowHome, function(data) {
                 data.info.jshbShowTypeList.map(a=>{
                     a.cls=""
