@@ -50,12 +50,13 @@
     </section>
     </div>
     </div>
-        
+ <dibu :active="3" v-if="type_p!=1"></dibu>       
 
 	</div>
 </template>
 <script>
     import base from "../js/base.js"
+    import dibu from "../components/dibu"
     export default {
         data() {
             return {
@@ -93,7 +94,7 @@
             }
         },
         components: {
-
+            dibu
         },
         methods: {
             loadMore() { //下拉刷新触发
@@ -122,15 +123,11 @@
             get_data(call_back) {
                 let th = this
                 try {
-                    this.qingqiu.userId = plus.storage.getItem("userId");
                 } catch (e) {
 
                 }
-
                 this.post('serviceorder', 'getOrderList', this.qingqiu, function(data) {
                     try {
-
-
                         if (data.info.page.list.length <= 0) {
                             return
                         }
@@ -171,6 +168,8 @@
                 a.cls = ""
             })
             this.dings_d[type_e].cls = "act"
+            this.qingqiu.userId = plus.storage.getItem("userId");
+            this.qingqiu.jshbToken = plus.storage.getItem("token")
         },
     }
 

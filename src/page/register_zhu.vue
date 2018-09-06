@@ -95,7 +95,7 @@
             
             xiayibu_d: function() {
                 if (this.sd_der) {
-                    this.hf('register_er')
+                    this.$router.push({path: 'register_er', query:{phone:this.phone,yzmas:this.yzmas}})
                 }
             }
         },

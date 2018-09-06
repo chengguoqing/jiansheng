@@ -112,7 +112,7 @@
         methods: {
             authLogout: function() {
                 let th = this
-
+                
                 for (var i in this.auths) {
                     var s = th.auths[i];
 
@@ -122,6 +122,9 @@
                                 alert("注销登录认证成功！");
                                 try {
                                     plus.storage.removeItem('token');
+                                    plus.storage.removeItem('userId');
+                                    plus.storage.removeItem('userName');
+                                    plus.storage.removeItem('userImg');
                                 } catch (e) {
 
                                 }
@@ -139,6 +142,10 @@
             var th = this;
             // 监听plusready事件
             mui.plusReady(function() {
+
+                if(plus.storage.getItem("userId") == ""){
+                    th.hf("login")
+                }
                 // 扩展API加载完毕，现在可以正常调用扩展API
                 plus.oauth.getServices(
                     function(services) {
