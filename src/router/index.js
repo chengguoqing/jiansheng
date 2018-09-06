@@ -26,6 +26,7 @@ import jiaolianshenqing from '@/page/jiaolianshenqing'
 import changguanruzhu from '@/page/changguanruzhu'
 import shezhi from '@/page/shezhi'
 import querendingdan from '@/page/querendingdan'
+import zhengjianshangchuan from '@/page/zhengjianshangchuan'
 Vue.use(Router)
 
 
@@ -135,6 +136,10 @@ export default new Router({
             path: '/querendingdan',
             name: 'querendingdan',
             component: querendingdan
+    }, {
+            path: '/zhengjianshangchuan',
+            name: 'zhengjianshangchuan',
+            component: zhengjianshangchuan
     }
   ]
 })

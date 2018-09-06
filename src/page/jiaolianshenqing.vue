@@ -4,7 +4,7 @@
     <header class="mui-bar mui-bar-nav asd_uy_dftx">
         <van-icon name="arrow-left "  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">教练申请</h1>
-  <a class=" mui-pull-right" @tap="zhu('zjsc')">
+  <a class=" mui-pull-right" @tap="hf('zhengjianshangchuan')">
         <i class="f_i mao_icosst ab"></i>
         </a>
     </header>
