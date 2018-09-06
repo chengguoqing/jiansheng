@@ -42,7 +42,7 @@
                   ￥1600
                   </section>
                       <section class="mui-col-xs-4 fz16 tr">
-                  <a class="mui-btn dsf_jh_erdert" @click="zhu('changguanyuding')">立即预定</a>
+                  <a class="mui-btn dsf_jh_erdert" @click="hf('querendingdan?id='+sd.id)">立即预定</a>
                   </section>
                  
                  </section>
@@ -55,7 +55,7 @@
                   ￥1600
                   </section>
                       <section class="mui-col-xs-4 fz16 tr">
-                  <a class="mui-btn dsf_jh_erdert" @click="zhu('changguanyuding')">立即预定</a>
+                  <a class="mui-btn dsf_jh_erdert" @click="hf('querendingdan?id='+sd.id)">立即预定</a>
                   </section>
                  
                  </section>
@@ -231,14 +231,14 @@
     export default {
         data() {
             return {
-                show_er:true,
+                show_er: true,
                 jshbPrieduserList: "",
                 jshbVenueImgList: "",
                 sd: ""
             }
         },
         components: {
-map_tiaozhuang
+            map_tiaozhuang
         },
         methods: {
 
@@ -249,13 +249,26 @@ map_tiaozhuang
             params.id = this.$route.query.id
             window.scrollTo(0, 0);
             this.post('serviceVenue', 'getVenueDetail', params, function(data) {
-            
-                console.log(data);
                 th.sd = data.info.jshbVenue
                 th.jshbPrieduserList = data.info.jshbPrieduserList
                 th.jshbVenueImgList = data.info.jshbVenueImgList
 
             })
+
+//            获取场馆订单列表
+            let getVenueOrderList = {}
+            getVenueOrderList.venueId = ""
+            getVenueOrderList.orderType = ""
+            getVenueOrderList.state = ""
+            getVenueOrderList.pageNo = 1
+
+            this.post('serviceVenue', 'getVenueOrderList', getVenueOrderList, function(data) {
+                console.log(data);
+
+            })
+
+
+
         },
     }
 

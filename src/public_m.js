@@ -21,7 +21,7 @@ export default {
             var url_dre = jiami.getRequest(sdsd_a, sdsd_b, cn),
                 th = this
             this.$store.state.load_in = true
-        
+
             this.$http.post(url_dre).then((res) => {
                 th.$store.state.load_in = false
                 var str = res.bodyText.toString().replace(/[\r\n]/g, '');
@@ -72,10 +72,18 @@ export default {
         }
 
         Vue.prototype.hf = function (url, cu) { //路由跳转
-            router.push({
-                path: "/" + url,
-                query: cu
-            })
+            if (cu) {
+                setTimeout(function () {
+                    router.push({
+                        path: "/" + url
+                    })
+                }, cu);
+            } else {
+                router.push({
+                    path: "/" + url
+                })
+            }
+
         }
         Vue.prototype.hf_right = function (url, canshu, cu) { //路由跳转
             let url_e = "index.html?/#/" + url

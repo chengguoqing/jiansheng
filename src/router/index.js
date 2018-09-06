@@ -25,6 +25,7 @@ import goupiaoxq from '@/page/goupiaoxq'
 import jiaolianshenqing from '@/page/jiaolianshenqing'
 import changguanruzhu from '@/page/changguanruzhu'
 import shezhi from '@/page/shezhi'
+import querendingdan from '@/page/querendingdan'
 Vue.use(Router)
 
 
@@ -130,6 +131,10 @@ export default new Router({
             path: '/shezhi',
             name: 'shezhi',
             component: shezhi
+    }, {
+            path: '/querendingdan',
+            name: 'querendingdan',
+            component: querendingdan
     }
   ]
 })
