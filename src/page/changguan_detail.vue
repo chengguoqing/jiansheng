@@ -29,37 +29,24 @@
             <p class="qc"></p>
         </section>
              
-             <section class="btm pd">
+             <section class="btm pd" v-for = "sd in jshbCardList">
                 <p class="dsf_tiiwerx">
-                    <span>健身</span> 
+                    <span>{{sd.projectName}}</span> 
                 </p>
                 
-              <section class="btm mui-row dsf_jh_deett">
+              <section class="btm mui-row dsf_jh_deett" v-for ="sd1 in sd.cardList">
                     <section class="mui-col-xs-4 fz16">
-                  年卡
+                  {{sd1.cardName}}
                   </section>
                       <section class="mui-col-xs-4 fz16 cen red">
-                  ￥1600
+                  ￥{{sd1.cardNormalPrice}}
                   </section>
                       <section class="mui-col-xs-4 fz16 tr">
-                  <a class="mui-btn dsf_jh_erdert" @click="hf('querendingdan?id='+sd.id)">立即预定</a>
+                  <a class="mui-btn dsf_jh_erdert" @click="hf('querendingdan?id='+id +'&cardId='+ sd1.cardId)">立即预定</a>
                   </section>
                  
                  </section>
-                 
-                     <section class="btm mui-row dsf_jh_deett">
-                    <section class="mui-col-xs-4 fz16">
-                  年卡
-                  </section>
-                      <section class="mui-col-xs-4 fz16 cen red">
-                  ￥1600
-                  </section>
-                      <section class="mui-col-xs-4 fz16 tr">
-                  <a class="mui-btn dsf_jh_erdert" @click="hf('querendingdan?id='+sd.id)">立即预定</a>
-                  </section>
-                 
-                 </section>
-                 
+               
                  
                  
              </section>
@@ -234,7 +221,9 @@
                 show_er: true,
                 jshbPrieduserList: "",
                 jshbVenueImgList: "",
-                sd: ""
+                jshbCardList:"",
+                sd: "",
+                id:""
             }
         },
         components: {
@@ -247,9 +236,11 @@
             var params = {},
                 th = this
             params.id = this.$route.query.id
+            th.id = this.$route.query.id
             window.scrollTo(0, 0);
             this.post('serviceVenue', 'getVenueDetail', params, function(data) {
-                console.log(JSON.stringify(data.info.projectList));
+                console.log(JSON.stringify(data.info.projectList[0].cardList));
+                th.jshbCardList = data.info.projectList;
                 th.jshbPrieduserList = data.info.jshbPrieduserList
                 th.jshbVenueImgList = data.info.jshbVenueImgList
 
