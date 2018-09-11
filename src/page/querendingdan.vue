@@ -89,8 +89,21 @@ export default {
             order: {
                 jshbToken: plus.storage.getItem("token"),
                 venueId: this.$route.query.id,
-                cardId: ""
+                cardId: this.$route.query.cardId,
+                ticketNum:1,
+                userName:plus.storage.getItem("userName"),
+                phone:"13122332233",
+                sumAmt:"20",
+                payAmt:"20",
+                payType:"2",   //2微信
+                invoiceType:"0", //开票类型
+                salesFlag:"0",     //促销标识
+                orderSource:"3",    //1安卓，2 ios, 3 h5
+                idNo:"130102197912311813"
             },
+            payId:"",
+            payAmt:"",
+            payState:"",//监视第一次插入订单，是否已经完成
             ddsf_jhdf: [
                 {
                     cls: "act",
@@ -108,6 +121,7 @@ export default {
         };
     },
     components: {},
+
     methods: {
         dsfdf(sd) {
             this.ddsf_jhdf.map(function(a) {
@@ -116,25 +130,46 @@ export default {
             sd.cls = "act";
         },
         postform() {
+            let th = this
             let orderType = 1;
             //let id = plus.storage.getItem("userId")
             let paySource = 4;
-            let payAmt = 1;
-            let openId = "55555555";
-            let params = {
-                orderType: orderType,
-                id: "6d4f9c7a9d844ba2ae4a2203636a2592",
-                payType: "2",
-                paySource: paySource,
-                payAmt: "1",
-                body: "订单",
-                openId: "5555"
-            };
+            //let payAmt = 1;
+            // let openId = "55555555";
+
+             alert(JSON.stringify(th.order));
+             th.post("serviceVenue", "setVneueOrder", th.order, function(data) {
+                 th.payId = data.info.id
+                 th.payAmt = data.info.payAmt
+                 th.payState = data.info.id
+
+             }); 
+
+
+        }
+    },
+    watch:{
+      payState: function (val) {
+      if(this.payState != ""){
+            let orderType = 1;
+            //let id = plus.storage.getItem("userId")
+            let paySource = 4;
+             let params = {
+                 orderType: orderType,
+                 id: this.payId,
+                 payType: "2",
+                 paySource: paySource,
+                 payAmt: this.payAmt,
+                 body: "订单",
+                 openId: plus.storage.getItem("userId")
+             };
             alert(JSON.stringify(params));
             this.post("serviceorder", "payOrderCheck", params, function(data) {
-                alert(JSON.stringify(data));
+                //alert(JSON.stringify(data));
+                window.location.href = data.info.mweb_url;
             });
-        }
+      }
+    },
     },
     mounted() {
         //            获取场馆订单列表
