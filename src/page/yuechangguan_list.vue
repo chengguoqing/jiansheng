@@ -71,7 +71,7 @@
         data() {
             return {
                 tet_der: "",
-                projectList: [],
+                projectList: [], 
                 qingqiu: {
                     venueCity: this.$store.state.venueCity, //这样的变量 在store=》index.js
                     latitude: this.$store.state.latitude,
@@ -110,6 +110,7 @@
                     this.disabled = true;
                     let th = this
                    th.qingqiu.searchInfo = this.$route.query.text || ''
+                   
                     th.get_data(function(leg) {
  
                         th.qingqiu.pageNo++

@@ -16,8 +16,9 @@
         components: {
             load_in
         },
-        mounted() {
+        created() {
                this.$store.state.venueCity=plus.storage.getItem("chengshi")||'石家庄'
+            
           
         }
     }
