@@ -48,7 +48,7 @@
                 <p class="pd pt10 pm10 fz16 z3">
             活动介绍
                     </p>
-            <section class="fz15 pd btm pt10 pm10 z6" v-html="sd.activityIntroduce">
+            <section class="fz15 pd btm pt10 pm10 z6 content" v-html="sd.activityIntroduce">
            
           
 

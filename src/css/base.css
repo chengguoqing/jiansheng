@@ -1376,3 +1376,6 @@ a:hover {
         font-size: 18px !important;
     }
 }
+.content img{
+    width:100%;
+}
