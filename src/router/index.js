@@ -27,6 +27,8 @@ import changguanruzhu from '@/page/changguanruzhu'
 import shezhi from '@/page/shezhi'
 import querendingdan from '@/page/querendingdan'
 import zhengjianshangchuan from '@/page/zhengjianshangchuan'
+import changguanyuding from '@/page/changguanyuding'
+import chengshi from '@/page/chengshi'
 Vue.use(Router)
 
 
@@ -140,6 +142,14 @@ export default new Router({
             path: '/zhengjianshangchuan',
             name: 'zhengjianshangchuan',
             component: zhengjianshangchuan
+    }, {
+            path: '/changguanyuding',
+            name: 'changguanyuding',
+            component: changguanyuding
+    }, {
+            path: '/chengshi',
+            name: 'chengshi',
+            component: chengshi
     }
   ]
 })

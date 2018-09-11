@@ -28,7 +28,7 @@
             
             <section v-waterfall-lower="loadMore"
   waterfall-disabled="disabled"
-  waterfall-offset="0">
+  waterfall-offset="0" >
     
                 
                 <section class="pd pt10" v-for="sd in data_list" @click="disabled=true;hf('changguan_detail?id='+sd.id)">
@@ -51,6 +51,13 @@
                 
                 
             </section>
+        
+
+        <section v-if="data_list.length<=0" class="cen">
+                <img src="../assets/img/dsf_sdf.png" class="dsf_sdf">
+            <p class="z9 mt10">没有数据...</p>
+        </section>
+
     </div>
 
     </div>
@@ -63,7 +70,7 @@
     export default {
         data() {
             return {
-                tet_der:"",
+                tet_der: "",
                 projectList: [],
                 qingqiu: {
                     venueCity: this.$store.state.venueCity, //这样的变量 在store=》index.js
@@ -91,7 +98,7 @@
                     cls: ""
                 }],
                 disabled: false, //是否禁止滚动 true禁止
-                sdf_hj_de:""
+                sdf_hj_de: ""
             }
         },
         components: {
@@ -102,8 +109,9 @@
                 if (!this.disabled) {
                     this.disabled = true;
                     let th = this
+                   th.qingqiu.searchInfo = this.$route.query.text || ''
                     th.get_data(function(leg) {
-
+ 
                         th.qingqiu.pageNo++
 
 
@@ -137,6 +145,7 @@
             get_data(call_back) {
                 let th = this
                 this.post('serviceVenue', 'getVenueList', this.qingqiu, function(data) {
+console.log(data);
                     if (th.projectList.length <= 0) {
                         th.projectList = data.info.projectList
                         console.log(data.info.projectList);
@@ -163,25 +172,30 @@
 
             }
         },
-            destroyed: function () {
+        destroyed: function() {
             this.disabled = true;
         },
         mounted() {
             //            this.get_data()
 
-            this.tet_der=plus.storage.getItem("token")
-            let th=this
+            try {
+                this.tet_der = plus.storage.getItem("token")
+            } catch (e) {
+
+            }
+
+            let th = this
             mui('.mui-scroll-wrapper').scroll({
                 deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
             });
-             this.$refs.mui_scroll.addEventListener('scroll', function(e) {
+            this.$refs.mui_scroll.addEventListener('scroll', function(e) {
                 var curscroll = -e.detail.y;
-                if(curscroll>200){
-                    th.sdf_hj_de="act"
-                }else{
-                      th.sdf_hj_de=""
+                if (curscroll > 200) {
+                    th.sdf_hj_de = "act"
+                } else {
+                    th.sdf_hj_de = ""
                 }
-                
+
                 console.log(curscroll);
             });
 
@@ -203,8 +217,14 @@
         width: 100%;
         z-index: 1000
     }
-    .dsf_derttdx.act{
+
+    .dsf_derttdx.act {
         top: 16px;
+    }
+
+    .dsf_sdf {
+        width: 100px;
+        margin-top: 60px;
     }
 
 </style>

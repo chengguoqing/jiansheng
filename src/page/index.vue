@@ -3,8 +3,8 @@
 
 			<header id="header" class="mui-bar mui-bar-transparent  dfer_jh_der " :class="sdf_hj_de">
 				<section class="mui-row ">
-					<section class="mui-col-xs-3 cf fz14 dsf_jh_der">
-						石家庄 <i class="dx icon-down2 cz"></i>
+					<section class="mui-col-xs-3 cf fz14 dsf_jh_der" @click="hf('chengshi')">
+						{{$store.state.venueCity}} <i class="dx icon-down2 cz"></i>
 					</section>
 					<section class="mui-col-xs-7 sdf_jh_deet pr" @tap="hf('search')">
 						输入场次名称、地址

@@ -80,9 +80,17 @@ export default {
                 }, cu);
             } else {
                 router.push({
-                    path: "/" + url
+                    path: "/" + url,
+                    query: cu
                 })
             }
+
+        }
+        Vue.prototype.hfer = function (url, cu) { //路由跳转
+            router.push({
+                path: "/" + url,
+                query: cu
+            })
 
         }
         Vue.prototype.hf_right = function (url, canshu, cu) { //路由跳转

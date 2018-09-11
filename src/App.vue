@@ -17,7 +17,8 @@
             load_in
         },
         mounted() {
-         
+               this.$store.state.venueCity=plus.storage.getItem("chengshi")||'石家庄'
+          
         }
     }
 
