@@ -42,7 +42,7 @@
                   ￥{{sd1.cardNormalPrice}}
                   </section>
                       <section class="mui-col-xs-4 fz16 tr">
-                  <a class="mui-btn dsf_jh_erdert" @click="hf('querendingdan?id='+id +'&cardId='+ sd1.cardId)">立即预定</a>
+                  <a class="mui-btn dsf_jh_erdert" @click="hf('querendingdan?id='+id +'&cardId='+ sd1.cardId + '&changguanname='+ changguanname + '&xiangmu='+ sd.projectName +'&cardName=' + sd1.cardName)">立即预定</a>
                   </section>
                  
                  </section>
@@ -223,7 +223,8 @@
                 jshbVenueImgList: "",
                 jshbCardList:"",
                 sd: "",
-                id:""
+                id:"",
+                changguanname:""
             }
         },
         components: {
@@ -240,6 +241,7 @@
             window.scrollTo(0, 0);
             this.post('serviceVenue', 'getVenueDetail', params, function(data) {
                 console.log(JSON.stringify(data.info.projectList[0].cardList));
+                th.changguanname = data.info.jshbVenue.venueName;
                 th.jshbCardList = data.info.projectList;
                 th.jshbPrieduserList = data.info.jshbPrieduserList
                 th.jshbVenueImgList = data.info.jshbVenueImgList
