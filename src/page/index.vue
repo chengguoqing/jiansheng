@@ -11,9 +11,9 @@
 						<i class="dx icon-iconfontzhizuobiaozhun22 fr mr10"></i>
 					</section>
 
-					<section class="mui-col-xs-2 tr dsf_jh_der">
+					<!--<section class="mui-col-xs-2 tr dsf_jh_der">
 						<i class="dx icon-xiaoxi cf fz20"></i>
-					</section>
+					</section>-->
 				</section>
 			</header>
      

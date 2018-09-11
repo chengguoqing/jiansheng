@@ -23,7 +23,7 @@
 				<p class="mt2">已付款</p>
 			</section>
 			<section class="mui-col-xs-3"  @tap="hf('my_order?type=3')" style="width:20%">
-				<i class="f_i df_fdf_dsdr pr ac"><span class="sd_e_rtde">2</span></i>
+				<i class="f_i df_fdf_dsdr pr ac"><!--<span class="sd_e_rtde">2</span>--></i>
 				<p class="mt2">已完成</p>
 			</section>
 			<section class="mui-col-xs-3"  @tap="hf('my_order?type=4')" style="width:20%">
@@ -112,7 +112,7 @@
         methods: {
             authLogout: function() {
                 let th = this
-                
+
                 for (var i in this.auths) {
                     var s = th.auths[i];
 
@@ -142,10 +142,7 @@
             var th = this;
             // 监听plusready事件
             mui.plusReady(function() {
-
-                if(plus.storage.getItem("userId") == ""){
-                    th.hf("login")
-                }
+                if(plus.storage.getItem("userId") == ""){}
                 // 扩展API加载完毕，现在可以正常调用扩展API
                 plus.oauth.getServices(
                     function(services) {

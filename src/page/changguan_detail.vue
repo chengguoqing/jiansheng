@@ -74,10 +74,10 @@
             <p class="fz16 z3 pt10 pm10">教练信息</p>
         
             <section class="pd pt10 pm10 yj4 dfs_jh_deer mb10" v-for="sd in jshbPrieduserList">
-                <img :src="sd.headimg" class="use_d_dert cz fl">
-                <section class="ov pl10">
-                    <ul class="dsf_kjhj_der">
-                        <li class="mui-row">
+                <img :src="sd.headimg" class="use_d_dert cz fl" @click="hf('jiaolian_detail?id='+sd.id)">
+                <section class="ov pl10" @click="hf('jiaolian_detail?id='+sd.id)">
+                    <ul class="dsf_kjhj_der" >
+                        <li class="mui-row" >
                             <p class="sd_jh_det z3 fl fz15">
                             姓 名： 
                             </p>
@@ -99,7 +99,7 @@
                            教学场地：
                             </p>
                             <section class="ov fz15">
-                            石家庄
+                            
                             </section>
                         </li>
                         
@@ -108,7 +108,7 @@
                           个人简历：
                             </p>
                             <section class="ov fz15 dian">
-                            从事健身行业5年从事健身行业5年从事健身行业5年从事健身行业5年
+                            
                             </section>
                         </li>
                     </ul>
@@ -249,7 +249,7 @@
             params.id = this.$route.query.id
             window.scrollTo(0, 0);
             this.post('serviceVenue', 'getVenueDetail', params, function(data) {
-                th.sd = data.info.jshbVenue
+                console.log(JSON.stringify(data.info.projectList));
                 th.jshbPrieduserList = data.info.jshbPrieduserList
                 th.jshbVenueImgList = data.info.jshbVenueImgList
 
@@ -263,7 +263,8 @@
             getVenueOrderList.pageNo = 1
 
             this.post('serviceVenue', 'getVenueOrderList', getVenueOrderList, function(data) {
-                console.log(data);
+                //console.log(data);
+
 
             })
 

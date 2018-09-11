@@ -4,7 +4,7 @@
     <header class="mui-bar mui-bar-nav  mui-row df_jh_deet">
           <section class="mui-col-xs-10 pr ss_jh_deert">
               <i class="f_i ssd_jh_er"></i>
-                <input type="search" placeholder="搜索课程、图文、视频、用户" v-model="ssd_sd" autofocus="true">
+                <input type="search" placeholder="" v-model="ssd_sd" autofocus="true">
         </section>
         <section class="mui-col-xs-2 fz16 cen df_hj_derty">
                 
@@ -20,14 +20,14 @@
                     <p class="z3 fz18 cen">大家都在搜</p>
                 
                     <p class="cen mt20">
-                        <span class="sd_jh_cdert">瘦腰</span>
+                        <span class="sd_jh_cdert">最好的场馆</span>
                     </p>
                     
                       <p class="cen mt20">
-                        <span class="sd_jh_cdert">减肥</span>
+                        <span class="sd_jh_cdert">健身</span>
                     </p>
                       <p class="cen mt20">
-                        <span class="sd_jh_cdert">懒人减肥方法</span>
+                        <span class="sd_jh_cdert">羽毛球</span>
                     </p>
                 </section>
                 
@@ -36,10 +36,10 @@
                     <i class="f_i dele_ddret"></i>
                     
                     <p class="z6 mt10">
-                        基础很舒服四十九分级基金<br>
-                        基础很舒服四十九分级基金 <br>
-                        基础很舒服基金<br>
-                        基础很舒服四十九分级基金四十九分级基
+                        桥东区<br>
+                        最近的 <br>
+                        运动<br>
+                        乒乓球
                     </p>
                     
                 </section>

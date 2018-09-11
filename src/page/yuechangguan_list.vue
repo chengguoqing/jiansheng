@@ -8,7 +8,7 @@
     </header>
         
             <section class="dsf_derttdx gd" :class="sdf_hj_de">
-            <van-tabs @tap="sd_xert"> <van-tab v-for="index in projectList" :title="index.venuename" ></van-tab></van-tabs> 
+            <van-tabs @click="sd_xert"> <van-tab v-for="index in projectList" :title="index.venuename" ></van-tab></van-tabs> 
             
             <section class="mui-row cen pt10 pm10 bbm bgff z3 df_hg_der btm">
                 <section class="mui-col-xs-4 fz14 " v-for="sd in sd_cdrt" :class="sd.cls" @tap="rpy_d(sd)">
