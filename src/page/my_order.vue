@@ -25,7 +25,7 @@
                               <span v-if="sd.state == '5'" class="fr ls fz14">已完成</span>
                               <span v-if="sd.state == '6'" class="fr ls fz14">已取消</span>
                         </section>
-                        <section class="btm pt10 mui-row pm10" @tap="hf('order_xq')">
+                        <section class="btm pt10 mui-row pm10" >
                             <img :src="sd.img" class="df_erjh_deer fl">
                             <section class="ov pl10 pt10">
                                 <p class="fz14 z3">预约项目：场馆</p>
@@ -35,7 +35,7 @@
                         </section>
                         <section class="pt5 pm5 tr btm fd_jh_deeret">
                             <!--<van-button type="primary" plain @tap="hf('changguan_detail?id=afb8f004065540b795847551dceae2a0')">再来一单</van-button>-->
-                            <van-button type="primary" plain>付款</van-button>
+                            <van-button type="primary" plain v-if="sd.state=='1'">付款</van-button>
                         </section>
 
                     </section>
