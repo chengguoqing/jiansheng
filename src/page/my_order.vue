@@ -17,10 +17,13 @@
 
                 <section v-waterfall-lower="loadMore" waterfall-disabled="disabled" waterfall-offset="0">
 
-                    <section class="pd bgff mt5 btm" v-for="sd in data_list" @tap="hf('order_xq?id='+sd.id+'&orderType='+qingqiu.orderType)">
+                    <section class="pd bgff mt5 btm" v-for="sd in data_list" @click="sd.state == '1'?hf('order_xq_pay?id='+sd.id+'&orderType='+qingqiu.orderType):hf('order_xq?id='+sd.id+'&orderType='+qingqiu.orderType)">
                         <section class="mui-row fz15 pt5  pm5">
                             {{sd.name}}
-                            <span class="fr ls fz14">{{sd.state}}</span>
+                            <span v-if="sd.state == '1'" class="fr ls fz14">待付款</span>
+                             <span v-if="sd.state == '2'" class="fr ls fz14">已付款</span>
+                              <span v-if="sd.state == '5'" class="fr ls fz14">已完成</span>
+                              <span v-if="sd.state == '6'" class="fr ls fz14">已取消</span>
                         </section>
                         <section class="btm pt10 mui-row pm10" @tap="hf('order_xq')">
                             <img :src="sd.img" class="df_erjh_deer fl">
