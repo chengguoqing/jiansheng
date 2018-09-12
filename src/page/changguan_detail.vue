@@ -180,7 +180,7 @@
                     商家信息
                 </p>
                 <section class="fz15 pd btm pt10 pm10 z6 dsf_khj_deert">
-                    {{sd.venueIntro}}
+                    {{intro}}
 
                 </section>
 
@@ -203,7 +203,8 @@ export default {
             jshbCardList: "",
             sd: "",
             id: "",
-            changguanname: ""
+            changguanname: "",
+            into:""
         };
     },
     components: {
@@ -218,7 +219,9 @@ export default {
         window.scrollTo(0, 0);
         this.post("serviceVenue", "getVenueDetail", params, function(data) {
             //console.log(JSON.stringify(data.info.projectList[0].cardList));
+            console.log(JSON.stringify(data))
             th.changguanname = data.info.jshbVenue.venueName;
+            th.intro = data.info.jshbVenue.venueIntro
             th.jshbCardList = data.info.projectList;
             th.jshbPrieduserList = data.info.jshbPrieduserList;
             th.jshbVenueImgList = data.info.jshbVenueImgList;

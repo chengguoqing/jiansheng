@@ -19,7 +19,7 @@
                <span class="z9">{{sd.name}}</span>   
             </van-cell>
                 <van-cell title="总价格">
-               <span class="red">￥220.00</span>   
+               <span class="red">￥{{sd.payAmt}}</span>   
             </van-cell>
                 <van-cell title="支付金额">
                 <span class="red">￥{{sd.payAmt}}</span>   
@@ -51,9 +51,9 @@
               
           </van-cell-group>   
         
-        <section class="pd pt20 pm10 bgff">
+       <!-- <section class="pd pt20 pm10 bgff">
             <van-button type="danger" class="fz16 w100">申请退款</van-button>
-        </section>
+        </section>-->
     </div>
         
 
@@ -77,10 +77,10 @@
             let th = this,
             chsjh_d = {}
             chsjh_d.id = this.$route.query.id
-            chsjh_d.orderType = this.$route.query.orderType
+            chsjh_d.orderType = 1//this.$route.query.orderType
             console.log(chsjh_d);
             this.post('serviceorder', 'getOrderDetail', chsjh_d, function(data) {
-                console.log(data);
+                console.log(JSON.stringify(data));
                 th.sd = data.info
 
             })
