@@ -2,7 +2,7 @@
 	<div >
 	 <header class="mui-bar mui-bar-nav asd_uy_dftx">
       <van-icon name="arrow-left"  class="mui-pull-left z3 mt15 mui-action-back"/>
-        <h1 class="mui-title z3">圣璐瑜伽北郡店</h1>
+        <h1 class="mui-title z3">{{venueName}}</h1>
         <a class="mui-action-back  mui-pull-right">
 
         </a>
@@ -12,20 +12,20 @@
         <section class="pd pt10 pm15 dsf_j_deert pr">
             <section class="mui-row">
                 <p class="mui-col-xs-8 cf fz16">
-                    季卡（一个季度）
+                    {{cardName}}
                 </p>
  
                 <p class="mui-col-xs-4 tr fz18">
-                    <span class="red fz18">￥799</span>
+                    <span class="red fz18">￥{{cardNormalPrice}}</span>
                 </p>
             </section>
             <p class="cf fz12 mt10">
-                有效期至：2018年8月8日
+                有效期至：
             </p>
 
             <div class="mui-numbox dfs_jh_deeet fr" data-numbox-step='1' data-numbox-min='0' data-numbox-max='100'>
                 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
-                <input class="mui-numbox-input" type="number" />
+                <input class="mui-numbox-input" type="number" value="0" v-model="cardNum"/>
                 <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
             </div>
 
@@ -43,10 +43,7 @@
                         商品描述
                 </p>
             <p class="z3 dfs_jh_deert">
-              位于中华北大街与赵二街交叉口北行200米路西，
-多名名师亲自授课，打造正统瑜伽教练培训的正式化、
-严格化、规范化，授课教室1000于平米，格调高雅，
-适合修习瑜伽
+{{miaoshu}}
             </p>
         
         </section>
@@ -56,9 +53,7 @@
                         购买须知
                 </p>
             <p class="z3 mt5">
-            1.订单购买后必须在30分钟内付款有效；<br>
-2.本电子卡需在有效期内使用有效；<br>
-3.如需退款需要提前48小时申请。
+                {{cardDescribe}}
             </p>
         
         </section>
@@ -66,7 +61,7 @@
         
         <section class="sdsf_JH_drer mui-row">
             <section class="mui-col-xs-8 cen fz16 red">
-                ￥799（1张）
+                ￥{{cardNormalPrice * cardNum}}（{{cardNum}}张）
             </section>
             <section class="mui-col-xs-4">
                 <a class="w100 mui-btn mui-btn-red sd_jh_edeett" @click="hfer('querendingdan',$route.query)">提交</a>
@@ -82,7 +77,17 @@
     export default {
         data() {
             return {
-
+                 id:"",
+                 cardId:"",
+                 miaoshu:"",
+                 xuzhi:"",
+                 cardBuyTips:"",
+                 cardNormalPrice:"",
+                 cardName:"",
+                 venueName:"",
+                 cardDescribe:"",
+                 cardNum:1,
+                 quer:""
             }
         },
         components: {
@@ -91,7 +96,48 @@
         methods: {
 
         },
-        mounted() {
+        watch: {
+            cardNum: function(val) {
+                //this.quer=this.$route.query
+               // this.quer.cardNum = this.cardNum
+            }
+        },
+        mounted() {                       
+            mui(".mui-numbox").numbox();
+
+            var th = this
+            th.id = this.$route.query.id
+            th.cardId = this.$route.query.cardId
+
+
+
+            let params = {}
+            params.id = th.id
+            
+            this.post('serviceVenue', 'getVenueDetail', params, function(data) {
+                th.venueName = data.info.jshbVenue.venueName
+                //console.log(JSON.stringify(data.info.jshbVenue.venueName))
+                for (var i in data.info.projectList) {
+                    for (var j in data.info.projectList[i]) {
+                        for (var k in data.info.projectList[i][j]) {
+                            if(th.cardId == data.info.projectList[i][j][k].cardId){
+                                th.miaoshu = data.info.projectList[i][j][k].cardDescribe
+                                th.cardBuyTips = data.info.projectList[i][j][k].cardBuyTips
+                                th.cardNormalPrice = data.info.projectList[i][j][k].cardNormalPrice
+                                th.cardName = data.info.projectList[i][j][k].cardName
+                                th.cardDescribe = data.info.projectList[i][j][k].cardDescribe
+                                localStorage.setItem("cardNum", th.cardNum);
+                                localStorage.setItem("cardNormalPrice", th.cardNormalPrice);
+                                      //alert(data.info.projectList[i][j][k].cardBuyTips)
+                            }
+                            console.log(JSON.stringify(data.info.projectList[i][j][k]))
+                        }
+                    }
+                }
+            })
+            //this.$route.query.cardNum = th.cardNum
+            //this.$route.query.cardNormalPrice = th.cardNormalPrice
+
 
         },
     }

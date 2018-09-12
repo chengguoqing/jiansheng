@@ -13,7 +13,7 @@
 
                 <ul class="sd_jh_edet">
                     <li>
-                        <span class="cf fz16 dfs_jh_dert">场 馆 ：</span>
+                        <span class="cf fz16 dfs_jh_dert">场 馆：</span>
                         <span class="cf fz16 ml5">{{$route.query.changguanname}}</span>
                     </li>
                     <li>
@@ -26,11 +26,11 @@
                     </li>
                     <li>
                         <span class="cf fz16 dfs_jh_dert">数 量：</span>
-                        <span class="cf fz16 ml5">1张</span>
+                        <span class="cf fz16 ml5">{{cardNum}}张</span>
                     </li>
                 </ul>
                 <p class="btm pt5 tr fz16 red">
-                    合计：8.80元
+                    合计：{{cardNum*cardNormalPrice}}元
                 </p>
 
                 <p class="dsf_jh_ddrrt ov">
@@ -83,7 +83,7 @@
 
             <section class="sdsf_JH_drer mui-row">
                 <section class="mui-col-xs-8 cen fz16 red">
-                    ￥799（1张）
+                    ￥{{cardNum*cardNormalPrice}}（{{cardNum}}张）
                 </section>
                 <section class="mui-col-xs-4">
                     <a class="w100 mui-btn mui-btn-red sd_jh_edeett" @tap="postform">提交</a>
@@ -105,10 +105,10 @@
                     venueId: this.$route.query.id,
                     cardId: this.$route.query.cardId,
                     ticketNum: 1,
-                    userName: plus.storage.getItem("userName"),
-                    phone: "13122332233",
-                    sumAmt: "20",
-                    payAmt: "20",
+                    userName: "",//plus.storage.getItem("userName"),
+                    phone: "",
+                    sumAmt: 0,
+                    payAmt: 0,
                     payType: "2", //2微信
                     invoiceType: "0", //开票类型
                     salesFlag: "0", //促销标识
@@ -124,18 +124,20 @@
                 payAmt: "",
                 payState: "", //监视第一次插入订单，是否已经完成
                 ddsf_jhdf: [{
-                        cls: "act",
+                        cls: "",
                         name: "支付宝",
                         icon: "",
                         msg: "支持大额订单支付"
                     },
                     {
-                        cls: "",
+                        cls: "act",
                         name: "微信支付",
                         icon: "ab",
                         msg: "绿色通道，安全便捷"
                     }
-                ]
+                ],
+                cardNum:0,
+                cardNormalPrice:0
             };
         },
         components: {
@@ -156,15 +158,25 @@
 
             },
             postform() {
+                if(this.dianhua == "" || this.xm_dsder ==""){
+                    mui.toast("姓名，电话不得为空")
+                    return;
+                }
                 let th = this
                 let orderType = 1;
                 //let id = plus.storage.getItem("userId")
                 let paySource = 4;
                 //let payAmt = 1;
                 // let openId = "55555555";
+                th.order.phone = this.dianhua
+                th.order.userName = this.xm_dsder
+                th.order.sumAmt = this.cardNum*this.cardNormalPrice
+                th.order.payAmt = this.cardNum*this.cardNormalPrice
+                
 
                 alert(JSON.stringify(th.order));
                 th.post("serviceVenue", "setVneueOrder", th.order, function(data) {
+                    alert(JSON.stringify(data))
                     th.payId = data.info.id
                     th.payAmt = data.info.payAmt
                     th.payState = data.info.id
@@ -189,7 +201,7 @@
                         body: "订单",
                         openId: plus.storage.getItem("userId")
                     };
-                    alert(JSON.stringify(params));
+                    //alert(JSON.stringify(params));
                     this.post("serviceorder", "payOrderCheck", params, function(data) {
                         //alert(JSON.stringify(data));
                         window.location.href = data.info.mweb_url;
@@ -201,6 +213,8 @@
             //            获取场馆订单列表
             let getVenueOrderDetail = {};
             getVenueOrderDetail.id = this.$route.query.id;
+            this.cardNum = localStorage.getItem("cardNum")
+            this.cardNormalPrice = localStorage.getItem("cardNormalPrice")
             this.post(
                 "serviceVenue",
                 "getVenueOrderDetail",
