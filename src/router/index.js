@@ -30,6 +30,7 @@ import zhengjianshangchuan from '@/page/zhengjianshangchuan'
 import changguanyuding from '@/page/changguanyuding'
 import chengshi from '@/page/chengshi'
 import order_xq_pay from '@/page/order_xq_pay'
+import test from '@/page/test'
 Vue.use(Router)
 
 
@@ -152,9 +153,14 @@ export default new Router({
             name: 'chengshi',
             component: chengshi
     }, {
-        path: '/order_xq_pay',
-        name: 'order_xq_pay',
-        component: order_xq_pay
+            path: '/order_xq_pay',
+            name: 'order_xq_pay',
+            component: order_xq_pay
+}, {
+            path: '/test',
+            name: 'test',
+            component: test
 }
   ]
 })
+

@@ -100,78 +100,31 @@
                 <p class="fz16 z3 pt10 pm10">特色服务</p>
                 <section class="asd_jh_deert">
                     <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd"></i>
+                        <i class="f_i dsfsdf_jhsd "></i>
                         <p class="z3 fz12">
                             无线
                         </p>
                     </section>
                     <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ab"></i>
+                        <i class="f_i dsfsdf_jhsd ab "></i>
                         <p class="z3 fz12">
                             洗浴
                         </p>
                     </section>
                     <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ac"></i>
+                        <i class="f_i dsfsdf_jhsd ac "></i>
                         <p class="z3 fz12">
                             停车场
                         </p>
                     </section>
                     <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ad"></i>
+                        <i class="f_i dsfsdf_jhsd ad "></i>
                         <p class="z3 fz12">
                             发票
                         </p>
                     </section>
+                    
 
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd"></i>
-                        <p class="z3 fz12">
-                            无线
-                        </p>
-                    </section>
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ab"></i>
-                        <p class="z3 fz12">
-                            洗浴
-                        </p>
-                    </section>
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ac"></i>
-                        <p class="z3 fz12">
-                            停车场
-                        </p>
-                    </section>
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ad"></i>
-                        <p class="z3 fz12">
-                            发票
-                        </p>
-                    </section>
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd"></i>
-                        <p class="z3 fz12">
-                            无线
-                        </p>
-                    </section>
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ab"></i>
-                        <p class="z3 fz12">
-                            洗浴
-                        </p>
-                    </section>
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ac"></i>
-                        <p class="z3 fz12">
-                            停车场
-                        </p>
-                    </section>
-                    <section class="dd_jhj_dert cen">
-                        <i class="f_i dsfsdf_jhsd ad"></i>
-                        <p class="z3 fz12">
-                            发票
-                        </p>
-                    </section>
                 </section>
             </section>
 
@@ -204,7 +157,8 @@ export default {
             sd: "",
             id: "",
             changguanname: "",
-            into:""
+            into:"",
+            charaServiceList:""
         };
     },
     components: {
@@ -219,7 +173,8 @@ export default {
         window.scrollTo(0, 0);
         this.post("serviceVenue", "getVenueDetail", params, function(data) {
             //console.log(JSON.stringify(data.info.projectList[0].cardList));
-            console.log(JSON.stringify(data))
+            console.log(data.info)
+
             th.changguanname = data.info.jshbVenue.venueName;
             th.intro = data.info.jshbVenue.venueIntro
             th.jshbCardList = data.info.projectList;

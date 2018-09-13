@@ -24,6 +24,9 @@ function dateFtt(fmt, date) { //author: meizz
 
 
 
+
+
+
 var sc = {
     xz: function (title, call_back) {
         if (mui.os.plus) {

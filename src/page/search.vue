@@ -63,7 +63,7 @@
         },
         methods: {
             sd_jh_de: function() {
-                mui.back()
+                this.hf('')
             },
             ss_dff() {
                 let sd_derer = ""
@@ -95,7 +95,10 @@
                     sd_dertx[sd_der.length-b-1]=a
                     console.log(a);
                 })
-                
+                if(this.$route.query.text){
+                            this.ssd_sd=  this.$route.query.text
+                }
+      
                 
                 this.sd_dertt=sd_dertx
             }

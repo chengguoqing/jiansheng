@@ -1,14 +1,33 @@
 <template>
 	<div >
 	 
-       <header class="mui-bar mui-bar-nav asd_uy_dftx">
+
+       <header class="mui-bar mui-bar-nav asd_uy_dftx" v-if="!$route.query.text">
                 <van-icon name="arrow-left "  class="mui-pull-left z3 mt15 mui-action-back"/>
         <h1 class="mui-title z3">约场馆</h1>
 
     </header>
+
+        
+            <header class="mui-bar mui-bar-nav  mui-row df_jh_deet" v-else>
+                
+           
+                      <section class="mui-col-xs-2 fz16">
+                            <van-icon name="arrow-left "  class="mui-pull-left z3 mt15 mui-action-back dfd_deertd"/>      
+    </section>
+          <section class="mui-col-xs-8 pr ss_jh_deert" @tap="hf('search?text='+$route.query.text)">
+              <i class="f_i ssd_jh_er"></i>
+                <input type="search" placeholder="" autofocus="true" v-model="$route.query.text" >
+        </section>
+        <section class="mui-col-xs-2 fz16  df_hj_derty tr">
+                
+                <span  class="">搜索</span>
+        </section>
+         
+        </header>
         
             <section class="dsf_derttdx gd" :class="sdf_hj_de">
-            <van-tabs @click="sd_xert"> <van-tab v-for="index in projectList" :title="index.venuename" ></van-tab></van-tabs> 
+            <van-tabs @click="sd_xert"> <van-tab v-for="index in projectList" :title="index.venuename" ></van-tab></van-tabs>  
             
             <section class="mui-row cen pt10 pm10 bbm bgff z3 df_hg_der btm">
                 <section class="mui-col-xs-4 fz14 " v-for="sd in sd_cdrt" :class="sd.cls" @tap="rpy_d(sd)">
@@ -226,6 +245,10 @@ console.log(data);
     .dsf_sdf {
         width: 100px;
         margin-top: 60px;
+    }
+    .dfd_deertd{
+        position: relative;
+        bottom: 4px;
     }
 
 </style>
