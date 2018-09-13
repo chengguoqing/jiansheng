@@ -197,7 +197,7 @@ export default {
                     paySource: paySource,
                     payAmt: this.payAmt,
                     body: "订单",
-                    openId: "66d6508b7b8f496fbcba868fb8c0ffc9", //plus.storage.getItem("userId"),
+                    openId: plus.storage.getItem("userId"),
                     payType: this.payType
                 };
                 alert(JSON.stringify(params));
@@ -245,5 +245,8 @@ export default {
     color: #333 !important;
     text-align: right;
     padding: 0px;
+}
+.z6{
+    color:#666;
 }
 </style>

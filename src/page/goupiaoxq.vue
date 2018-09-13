@@ -2,14 +2,14 @@
 <template>
 	<div >
 	   <header class="mui-bar mui-bar-nav asd_uy_dftx">
-     <van-icon name="arrow-left"  class="mui-pull-left z3 mt15  mui-action-back" />
+     <van-icon name="arrow-left" class="mui-pull-left z3 mt15 mui-action-back" @tap="back"/>左侧返回 右侧关闭
         <h1 class="mui-title z3">购票详情</h1>
   <a class="  mui-pull-right">
         <i class="f_i mao_icosst" @click="$store.state.is_map=true"></i>
         </a>
     </header>
         
-        
+   <!--     
           <div class="mui-content " id="seek_apper">
               <img :src="sd.showImg" class="w100 cz" style="width:375px;height:220px;">
               <section class="pd pt10 pm10 bgff mui-row">
@@ -21,25 +21,25 @@
                         </p>
                         <p class="fz12 z9 pt8">{{sd.showPlace}}</p>
                     </section>
-                    <!--
+                    
                     <section class="ov fz14 tr pt10">
                         3人已预订
                     </section>
-                    -->
-                </section>
+                    
+               </section>
               
               <section class="pd pt10 pm10 bgff mt10">
                     <p class="fz16 z3">图文介绍</p>
                   <p class="z3 fz14 sf_jh_deert">
       {{sd.showDescribe}}
                     </p>
-                  <!--<img src="../assets/img/ddfd_e.jpg"  class="w100">-->
- <!--                      <p class="z3 fz14 sf_jh_deert">
+                  <img src="../assets/img/ddfd_e.jpg"  class="w100">
+                     <p class="z3 fz14 sf_jh_deert">
       石家庄市裕彤国际体育中心,位于石家庄市长安区。
   处于城市中轴线的商业带中山路与体育大街交叉口东
   南，距市中心(解放广场-解放纪念碑)3.5公里 、火车
   站8公里，距石家庄正定国际机场机场15公里。
-                    </p>-->
+                    </p>
             </section>
               
                 <section class="pd pt10 pm10 bgff mt10">
@@ -69,7 +69,7 @@
     </div>
     <div class="footer-base"  v-else>
       <span class="base-only end" >立即订购</span>
-    </div>
+    </div>-->
 
 
 	</div>
@@ -80,13 +80,20 @@ export default {
   data() {
     return {
       sd: {},
-      sdImgList: {}
+      sdImgList: {},
+      id:"",
+      embed:""
     };
   },
   components: {
     map_tiaozhuang
   },
   methods: {
+
+        back() {
+            this.embed.close()
+        },
+
     showMaps: function() {
       if (
         "Android" === plus.os.name &&
@@ -102,6 +109,16 @@ export default {
     }
   },
   mounted() {
+
+           this.id = this.$route.query.id;
+            this.embed=plus.webview.create('http://www.fitness-partner.cn/bill/a/index.html#/billDetail/'+this.id, '',{top:'56px',bottom:'0px'});
+          plus.webview.currentWebview().append(this.embed);
+
+        return
+
+
+
+
     let th = this;
     this.post(
       "serviceShow",

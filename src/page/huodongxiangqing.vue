@@ -1,11 +1,12 @@
 <template>
     <section>
         <header class="mui-bar mui-bar-nav asd_uy_dftx">
-            <van-icon name="arrow-left" class="mui-pull-left z3 mt15 mui-action-back" />
+            <van-icon name="arrow-left" class="mui-pull-left z3 mt15 mui-action-back" @tap="back"/>左侧返回 右侧关闭
             <h1 class="mui-title z3">活动详情</h1>
 
         </header>
 
+<!--
         <div class="mui-scroll-wrapper df_jh_deertty ab" ref="mui_scroll">
             <div class="mui-scroll">
 
@@ -76,7 +77,7 @@
 
             </div>
         </div>
-
+-->
     </section>
 </template>
 <script>
@@ -84,26 +85,38 @@ import cg_ge from "../cg_ge.js";
 export default {
     data() {
         return {
-            sd: ""
+            sd: "",
+            embed:null,
+            id:"",
+            type:""
         };
     },
     components: {},
-    methods: {},
+    methods: {
+        back() {
+            this.embed.close()
+        }
+    },
     mounted() {
   
         //alert("ffff")  
     },
     created() {
-        // if (window.plus) {
-        //     plusReady();
-        // } else {
-        //     document.addEventListener("plusready", plusReady, false);
-        // }
-        // var w = plus.webview.create('http://www.baidu.com',"a","top:150px;");
-        // w.show(); // 显示窗口
+        
+       this.id = this.$route.query.id_e;
+       this.type =  this.$route.query.type;
+        if (this.type == "1") {
+            console.log('http://www.fitness-partner.cn/bill/index.html#/gameActivityDetailApp/'+this.id)
+            this.embed=plus.webview.create('http://www.fitness-partner.cn/bill/index.html#/gameActivityDetail/'+this.id, '',{top:'56px',bottom:'0px'});
+        }
+        else{
+            this.embed=plus.webview.create('http://www.fitness-partner.cn/bill/a/index.html#/activityDetailApp/'+this.id, '',{top:'56px',bottom:'0px'});
+        }
+        plus.webview.currentWebview().append(this.embed);
+        return;
         let sd_ddr = {},
             th = this;
-        sd_ddr.id = this.$route.query.id_e;
+
 
         var sd_df_a = "serviceActivity",
             sd_df_b = "getActivityDetail";

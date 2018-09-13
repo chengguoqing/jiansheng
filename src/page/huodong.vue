@@ -5,8 +5,9 @@
                  <van-icon name="arrow-left"  class="mui-pull-left z3 mt15 mui-action-back" v-if="type_p==1"/>
             <h1 class="mui-title ls "> {{type_p==1?'赛事列表':"最新活动"}}</h1>
         </header>
-        
+
      <div class="  mui-scroll-wrapper df_jh_deertty ab" ref="mui_scroll">
+         
 	<div class="mui-scroll">
 	    <huodong_list ></huodong_list>
     </div>
