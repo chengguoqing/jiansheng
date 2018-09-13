@@ -94,13 +94,13 @@ export default {
         //alert("ffff")  
     },
     created() {
-        if (window.plus) {
-            plusReady();
-        } else {
-            document.addEventListener("plusready", plusReady, false);
-        }
-        var w = plus.webview.create('http://www.baidu.com',"a","top:150px;");
-        w.show(); // 显示窗口
+        // if (window.plus) {
+        //     plusReady();
+        // } else {
+        //     document.addEventListener("plusready", plusReady, false);
+        // }
+        // var w = plus.webview.create('http://www.baidu.com',"a","top:150px;");
+        // w.show(); // 显示窗口
         let sd_ddr = {},
             th = this;
         sd_ddr.id = this.$route.query.id_e;
