@@ -266,6 +266,8 @@ export default {
                 console.log(data);
             }
         );
+
+        
     }
 };
 </script>
