@@ -80,7 +80,6 @@
                     </li>
                 </ul>
             </section>
-
             <section class="sdsf_JH_drer mui-row">
                 <section class="mui-col-xs-8 cen fz16 red">
                     ￥{{cardNum*cardNormalPrice}}（{{cardNum}}张）
@@ -122,7 +121,8 @@ export default {
                 }
             ],
             cardNum: 0,
-            cardNormalPrice: 0
+            cardNormalPrice: 0,
+            dianji:""
         };
     },
     components: {},
@@ -152,7 +152,7 @@ export default {
                 venueId: this.$route.query.id,
                 cardId: this.$route.query.cardId,
                 ticketNum: 1,
-                userName: plus.storage.getItem("userName"),
+                userName: "查理冯", //plus.storage.getItem("userName"),
                 phone: "",
                 sumAmt: 0,
                 payAmt: 0,
@@ -207,12 +207,46 @@ export default {
                     if (th.payType == 2) {
                         window.location.href = data.info.mweb_url;
                     } else if (th.payType == 1) {
-                        th.$http.jsonp('https://openapi.alipay.com/gateway.do?'+ data.info.orderString, {},
-                        { 
-                            headers: {},
-                            emulateJSON: true }).then((response) => {
-                                alert(JSON.stringify(response));
-                            });
+                        alert(JSON.stringify(data.info.orderString)); 
+                        location.href=data.info.orderString
+                        //th.dianji = data.info.orderString
+                        // const div = document.createElement("div");
+                        // div.innerHTML = unescape(data.info.orderString); //此处form就是后台返回接收到的数据
+                        // document.body.appendChild(div);
+                        // document.forms[0].submit();
+                        // var param = {};
+                        // th.$http.jsonp(
+                        //     "https://openapi.alipay.com/gateway.do?" +
+                        //         unescape(data.info.orderString),
+                        //     param,
+                        //     (err, data) => {
+                        //         if (!err) {
+                        //             alert(data)
+                        //             const div = document.createElement("div");
+                        //             div.innerHTML = data; //此处form就是后台返回接收到的数据
+                        //             document.body.appendChild(div);
+                        //             document.forms[0].submit();
+
+                        //             //console.log("111"+data);
+                        //         } else {
+                        //             // console.log("222"+err);
+                        //         }
+                        //     }
+                        // );
+
+                        // th.$http
+                        //     .jsonp(
+                        //         "https://openapi.alipay.com/gateway.do?" +
+                        //             data.info.orderString,
+                        //         {},
+                        //         {
+                        //             headers: {},
+                        //             emulateJSON: true
+                        //         }
+                        //     )
+                        //     .then(response => {
+                        //         alert(JSON.stringify(response));
+                        //     });
                     }
                 });
             }
@@ -245,8 +279,5 @@ export default {
     color: #333 !important;
     text-align: right;
     padding: 0px;
-}
-.z6{
-    color:#666;
 }
 </style>

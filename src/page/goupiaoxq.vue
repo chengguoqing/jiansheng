@@ -1,15 +1,15 @@
 <!--购票详情-->
 <template>
-	<div >
-	   <header class="mui-bar mui-bar-nav asd_uy_dftx">
-     <van-icon name="arrow-left" class="mui-pull-left z3 mt15 mui-action-back" @tap="back"/>左侧返回 右侧关闭
-        <h1 class="mui-title z3">购票详情</h1>
-  <a class="  mui-pull-right">
+  <div>
+    <header class="mui-bar mui-bar-nav asd_uy_dftx">
+      <van-icon name="arrow-left" class="mui-pull-left z3 mt15 mui-action-back" @tap="back" />
+      <h1 class="mui-title z3">购票详情</h1>
+      <a class="  mui-pull-right">
         <i class="f_i mao_icosst" @click="$store.state.is_map=true"></i>
-        </a>
+      </a>
     </header>
-        
-   <!--     
+
+    <!--     
           <div class="mui-content " id="seek_apper">
               <img :src="sd.showImg" class="w100 cz" style="width:375px;height:220px;">
               <section class="pd pt10 pm10 bgff mui-row">
@@ -71,76 +71,86 @@
       <span class="base-only end" >立即订购</span>
     </div>-->
 
-
-	</div>
+  </div>
 </template>
 <script>
 import map_tiaozhuang from "../components/map_tiaozhuang";
 export default {
-  data() {
-    return {
-      sd: {},
-      sdImgList: {},
-      id:"",
-      embed:""
-    };
-  },
-  components: {
-    map_tiaozhuang
-  },
-  methods: {
-
+    data() {
+        return {
+            sd: {},
+            sdImgList: {},
+            id: "",
+            embed: ""
+        };
+    },
+    components: {
+        map_tiaozhuang
+    },
+    methods: {
         back() {
-            this.embed.close()
+            this.embed.close();
         },
 
-    showMaps: function() {
-      if (
-        "Android" === plus.os.name &&
-        navigator.userAgent.indexOf("StreamApp") > 0
-      ) {
-        plus.nativeUI.toast("当前环境暂不支持地图插件");
+        showMaps: function() {
+            if (
+                "Android" === plus.os.name &&
+                navigator.userAgent.indexOf("StreamApp") > 0
+            ) {
+                plus.nativeUI.toast("当前环境暂不支持地图插件");
+                return;
+            }
+            var ws = plus.webview.currentWebview();
+            var wm = plus.webview.getWebviewById(plus.runtime.appid);
+            wm && wm.evalJS("preateClear()");
+            clicked("maps_map.html", false, true);
+        }
+    },
+    mounted() {
+        this.id = this.$route.query.id;
+        this.embed = plus.webview.create(
+            "https://www.fitness-partner.cn/bill/a/index.html#/billDetail/" +
+                this.id,
+            "",
+            { top: "56px", bottom: "0px" }
+        );
+        plus.webview.currentWebview().append(this.embed);
+
+        mui.back = function() {
+            var wvs = plus.webview.all();
+            for (var i = 0; i < wvs.length; i++) {
+                if (wvs[i].getURL().indexOf("billDetail") > 0) {
+                   // alert("webview" + i + ": " + wvs[i].getURL());
+                    wvs[i].close();
+                }
+            }
+            history.back(-1);
+        };
+
         return;
-      }
-      var ws = plus.webview.currentWebview();
-      var wm = plus.webview.getWebviewById(plus.runtime.appid);
-      wm && wm.evalJS("preateClear()");
-      clicked("maps_map.html", false, true);
+
+        let th = this;
+        this.post(
+            "serviceShow",
+            "getShowDetail",
+            { id: this.$route.query.id },
+            function(data) {
+                th.sd = data.info.jshbShowDetails;
+                th.sdImgList = data.info.jshbShowImgList;
+                //console.log(JSON.stringify(data.info.jshbShowImgList));
+                console.log(JSON.stringify(data));
+            }
+        );
     }
-  },
-  mounted() {
-
-           this.id = this.$route.query.id;
-            this.embed=plus.webview.create('http://www.fitness-partner.cn/bill/a/index.html#/billDetail/'+this.id, '',{top:'56px',bottom:'0px'});
-          plus.webview.currentWebview().append(this.embed);
-
-        return
-
-
-
-
-    let th = this;
-    this.post(
-      "serviceShow",
-      "getShowDetail",
-      { id: this.$route.query.id },
-      function(data) {
-        th.sd = data.info.jshbShowDetails;
-        th.sdImgList = data.info.jshbShowImgList;
-        //console.log(JSON.stringify(data.info.jshbShowImgList));
-         console.log(JSON.stringify(data));
-      }
-    );
-  }
 };
 </script>
 <style scoped>
 .time_icon_eer {
-  width: 19px;
-  height: 19px;
-  background-position: -63px -236px;
+    width: 19px;
+    height: 19px;
+    background-position: -63px -236px;
 }
-.footer-base{
+.footer-base {
     width: 100%;
     background: #fff;
     position: fixed;
@@ -150,11 +160,11 @@ export default {
     padding: 10px 0;
 }
 .sf_jh_deert {
-  text-indent: 20px;
-  line-height: 1.6;
-  margin-top: 10px;
+    text-indent: 20px;
+    line-height: 1.6;
+    margin-top: 10px;
 }
-.base-only{
+.base-only {
     width: 96%;
     background: #f70;
     color: #fff;
@@ -164,7 +174,7 @@ export default {
     text-align: center;
     border-radius: 5px;
 }
-.footer-base .end{
+.footer-base .end {
     background: #ccc;
 }
 </style>

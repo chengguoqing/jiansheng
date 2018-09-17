@@ -1,12 +1,12 @@
 <template>
     <section>
         <header class="mui-bar mui-bar-nav asd_uy_dftx">
-            <van-icon name="arrow-left" class="mui-pull-left z3 mt15 mui-action-back" @tap="back"/>左侧返回 右侧关闭
+            <van-icon name="arrow-left" class="mui-pull-left z3 mt15 mui-action-back" @tap="back" />
             <h1 class="mui-title z3">活动详情</h1>
 
         </header>
 
-<!--
+        <!--
         <div class="mui-scroll-wrapper df_jh_deertty ab" ref="mui_scroll">
             <div class="mui-scroll">
 
@@ -86,37 +86,59 @@ export default {
     data() {
         return {
             sd: "",
-            embed:null,
-            id:"",
-            type:""
+            embed: null,
+            id: "",
+            type: ""
         };
     },
     components: {},
     methods: {
         back() {
-            this.embed.close()
+            this.embed.close();
         }
     },
-    mounted() {
-  
-        //alert("ffff")  
-    },
+    mounted() {},
     created() {
-        
-       this.id = this.$route.query.id_e;
-       this.type =  this.$route.query.type;
+        this.id = this.$route.query.id_e;
+        this.type = this.$route.query.type;
         if (this.type == "1") {
-            console.log('http://www.fitness-partner.cn/bill/index.html#/gameActivityDetailApp/'+this.id)
-            this.embed=plus.webview.create('http://www.fitness-partner.cn/bill/index.html#/gameActivityDetail/'+this.id, '',{top:'56px',bottom:'0px'});
-        }
-        else{
-            this.embed=plus.webview.create('http://www.fitness-partner.cn/bill/a/index.html#/activityDetailApp/'+this.id, '',{top:'56px',bottom:'0px'});
+            // console.log(
+            //    "http://www.fitness-partner.cn/bill/index.html#/gameActivityDetailApp/" +
+            //        this.id
+            //);
+            //console.log("http://www.fitness-partner.cn/bill/a/index.html#/gameActivityDetailApp/" + this.id)
+            this.embed = plus.webview.create(
+                "https://www.fitness-partner.cn/bill/a/index.html#/gameActivityDetailApp/" +
+                    this.id,
+                "",
+                { top: "56px", bottom: "0px" }
+            );
+        } else {
+            this.embed = plus.webview.create(
+                "https://www.fitness-partner.cn/bill/a/index.html#/activityDetailApp/" +
+                    this.id,
+                "",
+                { top: "56px", bottom: "0px" }
+            );
         }
         plus.webview.currentWebview().append(this.embed);
+        var old_back = mui.back;
+        mui.back = function() {
+            var wvs = plus.webview.all();
+            for (var i = 0; i < wvs.length; i++) {
+                if (
+                    wvs[i].getURL().indexOf("activityDetailApp") > 0 ||
+                    wvs[i].getURL().indexOf("gameActivityDetail") > 0
+                ) {
+                  //  alert("webview" + i + ": " + wvs[i].getURL());
+                    wvs[i].close();
+                }
+            }
+            history.back(-1);
+        };
         return;
         let sd_ddr = {},
             th = this;
-
 
         var sd_df_a = "serviceActivity",
             sd_df_b = "getActivityDetail";
