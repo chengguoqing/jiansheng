@@ -131,8 +131,8 @@ export default {
         dsfdf(sd) {
             if (sd.name == "微信支付") {
                 this.payType = 2;
-            } else if ((sd.name = "支付宝")) {
-                this.payType = 1;
+            } else if ((sd.name = "H5支付宝")) {
+                this.payType = 3;
             }
             try {
                 this.ddsf_jhdf.map(function(a) {
@@ -156,12 +156,12 @@ export default {
                 phone: "",
                 sumAmt: 0,
                 payAmt: 0,
-                payType: "2", //2微信
+                payType: this.payType, //2微信
                 invoiceType: "0", //开票类型
                 salesFlag: "0", //促销标识
                 orderSource: "3", //1安卓，2 ios, 3 h5
                 idNo: "130102197912311813",
-                orderType: 1 //1为场馆
+                orderType: 1 //1为场馆 8是太极大会
             };
 
             //let orderType = 1;
@@ -193,7 +193,7 @@ export default {
                 let params = {
                     orderType: 1,
                     id: this.payId,
-                    payType: "2",
+                    payType: this.payType,
                     paySource: paySource,
                     payAmt: this.payAmt,
                     body: "订单",
@@ -204,9 +204,9 @@ export default {
                 this.post("serviceorder", "payOrderCheck", params, function(
                     data
                 ) {
-                    if (th.payType == 2) {
+                    if (th.payType == 2) { //微信支付
                         window.location.href = data.info.mweb_url;
-                    } else if (th.payType == 1) {
+                    } else if (th.payType == 3) { //H5版支付宝支付
                         alert(JSON.stringify(data.info.orderString)); 
                         location.href=data.info.orderString
                         //th.dianji = data.info.orderString
